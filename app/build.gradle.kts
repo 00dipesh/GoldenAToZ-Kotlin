@@ -6,6 +6,7 @@ plugins {
 android {
     namespace = "com.goldendigitech.goldenatoz"
     compileSdk = 34
+    viewBinding.enable = true
 
     defaultConfig {
         applicationId = "com.goldendigitech.goldenatoz"
