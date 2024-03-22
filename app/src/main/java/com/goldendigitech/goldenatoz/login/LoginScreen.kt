@@ -1,7 +1,8 @@
-package com.goldendigitech.goldenatoz
+package com.goldendigitech.goldenatoz.login
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.goldendigitech.goldenatoz.R
 
 class LoginScreen : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

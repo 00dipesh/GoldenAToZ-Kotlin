@@ -9,6 +9,7 @@ import android.preference.PreferenceManager
 import android.util.Log
 import com.goldendigitech.goldenatoz.MainActivity
 import com.goldendigitech.goldenatoz.R
+import com.goldendigitech.goldenatoz.login.LoginScreen
 import com.goldendigitech.goldenatoz.singleToneClass.SharedPreferencesManager
 
 class SplashScreen : AppCompatActivity() {
@@ -35,7 +36,7 @@ class SplashScreen : AppCompatActivity() {
             if (userId == 0) {
                 // If user ID is not found, navigate to login activity
                 Log.d(TAG, "User ID not found in SharedPreferences")
-                val intent = Intent(this, LoginPasswordActivity::class.java)
+                val intent = Intent(this, LoginScreen::class.java)
                 startActivity(intent)
             } else {
                 // If user ID is found, navigate to main activity
