@@ -6,7 +6,6 @@ import com.goldendigitech.goldenatoz.R
 
 class AttendanceActivity : AppCompatActivity() {
 
-    private val viewModel: AttendanceViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
