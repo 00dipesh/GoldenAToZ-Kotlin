@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#FFFFFF"/> <!-- Set your desired background color -->
+            <corners android:radius="7dp"/> <!-- Set corner radius if needed -->
+        </shape>
+    </item>
+    <item android:right="8dp" android:top="8dp" android:bottom="8dp">
+        <layer-list>
+            <item>
+                <bitmap android:src="@android:drawable/arrow_down_float" android:gravity="end|center_vertical"/>
+                <color android:color="@color/gryclr"/>
+            </item>
+        </layer-list>
+    </item>
+</layer-list>

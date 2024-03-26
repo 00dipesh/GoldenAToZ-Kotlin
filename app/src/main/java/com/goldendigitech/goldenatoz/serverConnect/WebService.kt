@@ -1,14 +1,12 @@
 package com.goldendigitech.goldenatoz.serverConnect
 
+import com.goldendigitech.goldenatoz.attendance.AttendanceModel
+import com.goldendigitech.goldenatoz.attendance.AttendanceResponse
+import retrofit2.Call
+import retrofit2.http.Body
+import retrofit2.http.POST
+
 interface WebService {
-
-//    @POST("Api/Account/Register")
-//    fun registerOrganisation(@Body registerModel: RegisterModel): Call<RegisterResponce>
-
-//    @GET("Api/Employee/Get")
-//    fun getEmployee(@Query("employeeId") employeeId: Int?): Call<GetEmployeeModel>
-//
-//    @POST("Api/Employee/Login")
-//    fun userLogin(@Body loginModel: LoginModel): Call<LoginResponse>
-
+    @POST("Api/Employee/Attendace/Add")
+    suspend fun addAttendance(@Body requestAddendance: AttendanceModel): AttendanceResponse
 }
