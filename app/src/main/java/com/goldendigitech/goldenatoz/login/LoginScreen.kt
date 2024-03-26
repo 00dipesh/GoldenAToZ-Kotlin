@@ -1,10 +1,30 @@
 package com.goldendigitech.goldenatoz.login
 
+import android.annotation.SuppressLint
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.method.HideReturnsTransformationMethod
+import android.text.method.PasswordTransformationMethod
+import android.util.Log
+import android.view.MotionEvent
+import android.view.View
+import android.widget.Toast
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import com.goldendigitech.goldenatoz.MainActivity
 import com.goldendigitech.goldenatoz.R
+import com.goldendigitech.goldenatoz.databinding.ActivityLoginScreenBinding
 
 class LoginScreen : AppCompatActivity() {
+
+    val TAG = "LoginScreen"
+    private lateinit var viewModel: LoginViewModel
+
+    lateinit var loginScreenBinding: ActivityLoginScreenBinding
+    var PasswordVisible: Boolean = false
+
+    @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //    setContentView(R.layout.activity_login_screen)
@@ -15,6 +35,7 @@ class LoginScreen : AppCompatActivity() {
         viewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
 
         Log.d(TAG,"Login Data: "+viewModel)
+
         loginScreenBinding.EdPassword.setOnTouchListener(View.OnTouchListener { view, motionEvent ->
             val correct = 2
             if (motionEvent.action == MotionEvent.ACTION_UP) {
@@ -34,7 +55,7 @@ class LoginScreen : AppCompatActivity() {
                         loginScreenBinding.EdPassword.setCompoundDrawablesRelativeWithIntrinsicBounds(
                             0,
                             0,
-                            R.drawable.ic_visibility,
+                            R.drawable.ic_visiblity,
                             0
                         )
                         loginScreenBinding.EdPassword.transformationMethod =
@@ -50,10 +71,33 @@ class LoginScreen : AppCompatActivity() {
         loginScreenBinding.loginBtn.setOnClickListener {
 
             val email = loginScreenBinding.EdUsername.text.toString()
-           // val contact = contactEditText.text.toString()
+            // val contact = contactEditText.text.toString()
             val password = loginScreenBinding.EdPassword.text.toString()
 
+            val loginModel = LoginModel(email, password)
+            viewModel.userLogin(loginModel)
 
 
+        }
+
+        viewModel.loginResponse.observe(this, Observer { response ->
+            if (response != null) {
+                if (response.success) {
+                    val intent = Intent(this, MainActivity::class.java)
+                    startActivity(intent)
+                    finishAffinity()
+                    Log.e("LoginViewModel", "Login failed: ${response.success}")
+                } else {
+                    Toast.makeText(this, response.message, Toast.LENGTH_SHORT).show()
+                    Log.e("LoginViewModelel", "Login failed:")
+
+                }
+            } else {
+                Toast.makeText(this, "Login failed", Toast.LENGTH_SHORT).show()
+                Log.e("LoginViewModelek", "Login failed:")
+
+            }
+        })
     }
+
 }

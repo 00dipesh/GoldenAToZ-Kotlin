@@ -1,0 +1,7 @@
+package com.goldendigitech.goldenatoz.login
+
+data class LoginModel (
+
+    val email: String,
+    val password: String
+)
