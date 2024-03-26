@@ -37,6 +37,7 @@ class LoginScreen : AppCompatActivity() {
         viewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
 
         Log.d(TAG,"Login Data: "+viewModel)
+        
         loginScreenBinding.EdPassword.setOnTouchListener(View.OnTouchListener { view, motionEvent ->
             val correct = 2
             if (motionEvent.action == MotionEvent.ACTION_UP) {
