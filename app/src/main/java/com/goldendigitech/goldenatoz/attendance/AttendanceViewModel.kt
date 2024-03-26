@@ -15,17 +15,4 @@ class AttendanceViewModel : ViewModel()
     val response: LiveData<AttendanceResponse> = _response
 
 
-    fun addAttendance(request: AttendanceModel)
-    {
-        viewModelScope.launch {
-            try {
-                val response = Constant.getClient().addAttendance(request)
-                _response.value = response
-            }
-            catch (e : Exception)
-            {
-
-            }
-        }
-    }
 }
