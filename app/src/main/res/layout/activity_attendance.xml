@@ -1,0 +1,973 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/app_background"
+    tools:context=".attendance.AttendanceActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@drawable/toolbar_background">
+
+        <ImageView
+            android:id="@+id/arro_back"
+            android:layout_width="32dp"
+            android:layout_height="33dp"
+            android:layout_marginEnd="8dp"
+            android:src="@drawable/ic_arrow_back" />
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/atoz_logo" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/urbanist_black"
+            android:paddingStart="13dp"
+            android:text="Attendance"
+            android:textColor="@color/login_textcolor"
+            android:textSize="25dp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/iv_sync_data"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="end"
+            android:layout_marginEnd="15dp"
+            android:src="@drawable/refresh_icon"
+
+            />
+
+        <ImageView
+            android:id="@+id/camera"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_gravity="end"
+            android:layout_marginEnd="15dp"
+            android:src="@drawable/camera_icon"
+            android:visibility="gone" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+
+    <LinearLayout
+        android:id="@+id/liner_attendance"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/attendance_background"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="10dp"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5">
+
+                <TextView
+                    android:id="@+id/employee_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/urbanist_black"
+                    android:text="Employee Name"
+                    android:textColor="@color/gryclr"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/employee_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_below="@+id/employee_txt"
+                    android:layout_alignStart="@+id/employee_txt"
+                    android:layout_marginTop="3dp"
+                    android:background="@drawable/attendance_edittext"
+                    android:fontFamily="@font/urbanist_black"
+                    android:paddingStart="15dp"
+                    android:paddingTop="10dp"
+                    android:text=""
+                    android:textColor="@color/gryclr"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignTop="@id/employee_name"
+                    android:layout_alignBottom="@id/employee_name"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="10dp"
+                    android:src="@drawable/emp_img" />
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_weight="0.5">
+
+                <TextView
+                    android:id="@+id/username"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/urbanist_black"
+                    android:text="Username"
+                    android:textColor="@color/gryclr"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+
+                <TextView
+                    android:id="@+id/txt_username"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_below="@+id/username"
+                    android:layout_alignStart="@+id/username"
+                    android:layout_marginTop="3dp"
+                    android:background="@drawable/attendance_edittext"
+                    android:fontFamily="@font/urbanist_black"
+                    android:paddingStart="15dp"
+                    android:paddingTop="10dp"
+                    android:text=""
+                    android:textColor="@color/gryclr"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignTop="@id/txt_username"
+                    android:layout_alignBottom="@id/txt_username"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="10dp"
+                    android:src="@drawable/persion_img" />
+
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginEnd="10dp"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/txt_add"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/urbanist_black"
+                    android:text="Address"
+                    android:textColor="@color/gryclr"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txt_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_below="@+id/txt_add"
+                    android:layout_alignStart="@+id/txt_add"
+                    android:layout_marginTop="3dp"
+                    android:background="@drawable/attendance_edittext"
+                    android:fontFamily="@font/urbanist_black"
+                    android:paddingStart="15dp"
+                    android:paddingTop="10dp"
+                    android:text=""
+                    android:textColor="@color/gryclr"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignTop="@id/txt_address"
+                    android:layout_alignBottom="@id/txt_address"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="10dp"
+                    android:src="@drawable/address_img" />
+
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="3dp">
+
+                <TextView
+                    android:id="@+id/Email_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/urbanist_black"
+                    android:text="Email"
+                    android:textColor="@color/gryclr"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+
+                <TextView
+                    android:id="@+id/txt_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_below="@+id/Email_txt"
+                    android:layout_alignStart="@+id/Email_txt"
+                    android:layout_marginTop="3dp"
+                    android:background="@drawable/attendance_edittext"
+                    android:fontFamily="@font/urbanist_black"
+                    android:paddingStart="15dp"
+                    android:paddingTop="10dp"
+                    android:text=""
+                    android:textColor="@color/gryclr"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignTop="@id/txt_email"
+                    android:layout_alignBottom="@id/txt_email"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="10dp"
+                    android:src="@drawable/email_img" />
+
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginEnd="10dp"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="1dp"
+                android:layout_weight="0.5">
+
+                <TextView
+                    android:id="@+id/Contact_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/urbanist_black"
+                    android:text="Contact No"
+                    android:textColor="@color/gryclr"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+
+                <TextView
+                    android:id="@+id/txt_contact"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_below="@+id/Contact_txt"
+                    android:layout_alignStart="@+id/Contact_txt"
+                    android:layout_marginTop="3dp"
+                    android:background="@drawable/attendance_edittext"
+                    android:fontFamily="@font/urbanist_black"
+                    android:paddingStart="15dp"
+                    android:paddingTop="10dp"
+                    android:text=""
+                    android:textColor="@color/gryclr"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignTop="@id/txt_contact"
+                    android:layout_alignBottom="@id/txt_contact"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="10dp"
+                    android:src="@drawable/contact_img" />
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_weight="0.5">
+
+                <TextView
+                    android:id="@+id/designation_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/urbanist_black"
+                    android:text="Designation"
+                    android:textColor="@color/gryclr"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+
+                <TextView
+                    android:id="@+id/txt_designation"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_below="@+id/designation_txt"
+                    android:layout_alignStart="@+id/designation_txt"
+                    android:layout_marginTop="3dp"
+                    android:background="@drawable/attendance_edittext"
+                    android:fontFamily="@font/urbanist_black"
+                    android:paddingStart="15dp"
+                    android:paddingTop="10dp"
+                    android:text=""
+                    android:textColor="@color/gryclr"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignTop="@id/txt_designation"
+                    android:layout_alignBottom="@id/txt_designation"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="10dp"
+                    android:src="@drawable/designation_img" />
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="20dp"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="1dp"
+                android:layout_weight="0.5">
+
+                <TextView
+                    android:id="@+id/hq_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/urbanist_black"
+                    android:text="HQ"
+                    android:textColor="@color/gryclr"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+
+                <TextView
+                    android:id="@+id/txt_hq"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_below="@+id/hq_txt"
+                    android:layout_alignStart="@+id/hq_txt"
+                    android:layout_marginTop="3dp"
+                    android:background="@drawable/attendance_edittext"
+                    android:fontFamily="@font/urbanist_black"
+                    android:paddingStart="15dp"
+                    android:paddingTop="10dp"
+                    android:text=""
+                    android:textColor="@color/gryclr"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignTop="@id/txt_hq"
+                    android:layout_alignBottom="@id/txt_hq"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="10dp"
+                    android:src="@drawable/hq_img" />
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_weight="0.5">
+
+                <TextView
+                    android:id="@+id/code_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/urbanist_black"
+                    android:text="Employee Code"
+                    android:textColor="@color/gryclr"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+
+                <TextView
+                    android:id="@+id/txt_employeecode"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_below="@+id/code_txt"
+                    android:layout_alignStart="@+id/code_txt"
+                    android:layout_marginTop="3dp"
+                    android:background="@drawable/attendance_edittext"
+                    android:fontFamily="@font/urbanist_black"
+                    android:paddingStart="15dp"
+                    android:paddingTop="10dp"
+                    android:text=""
+                    android:textColor="@color/gryclr"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignTop="@id/txt_employeecode"
+                    android:layout_alignBottom="@id/txt_employeecode"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="10dp"
+                    android:src="@drawable/ecode_img" />
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linear_woorkinfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/btn_submit"
+        android:layout_below="@+id/liner_attendance"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="2dp"
+        android:background="@drawable/work_info_background"
+        android:orientation="vertical">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="25dp"
+            android:layout_marginBottom="2dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/urbanist_black"
+                    android:text="Working Status"
+                    android:textColor="@color/gryclr"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <!-- Spinner to display the dropdown -->
+                <Spinner
+                    android:id="@+id/spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/spinner_background"
+                    android:textAlignment="center" />
+
+
+                <!--visiblity-->
+                <RelativeLayout
+                    android:id="@+id/Rel_leave"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/txt_type_leave"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:fontFamily="@font/urbanist_black"
+                        android:text="Types Of Leave"
+                        android:textColor="@color/gryclr"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <Spinner
+                        android:id="@+id/spinner_type_leave"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_below="@+id/txt_type_leave"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/spinner_background"
+                        android:textAlignment="center" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/spinner_type_leave"
+                        android:layout_marginTop="8dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/txt_fromdate"
+                            android:layout_width="0dp"
+                            android:layout_height="50dp"
+                            android:layout_below="@+id/txt_type_leave"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginEnd="5dp"
+                            android:layout_weight="0.5"
+                            android:background="@drawable/edittext_drawable"
+                            android:gravity="center_vertical"
+                            android:paddingStart="4dp"
+                            android:paddingEnd="10dp"
+                            android:text="From Date"
+                            android:textColor="@color/black"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/txt_todate"
+                            android:layout_width="0dp"
+                            android:layout_height="50dp"
+                            android:layout_below="@+id/txt_type_leave"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_weight="0.5"
+                            android:background="@drawable/edittext_drawable"
+                            android:gravity="center_vertical"
+                            android:paddingStart="4dp"
+                            android:paddingEnd="10dp"
+                            android:text="To Date"
+                            android:textColor="@color/black"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+
+                </RelativeLayout>
+                <!--visiblity gone on-->
+
+                <LinearLayout
+                    android:id="@+id/layout_status"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/urbanist_black"
+                        android:text="WFM/WFH"
+                        android:textColor="@color/gryclr"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <Spinner
+                        android:id="@+id/spinner_workType"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/spinner_background"
+                        android:textAlignment="center" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/urbanist_black"
+                        android:text="Area Of Work"
+                        android:textColor="@color/gryclr"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <Spinner
+                        android:id="@+id/spinner_area_work"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/spinner_background"
+                        android:textAlignment="center" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/urbanist_black"
+                        android:text="State"
+                        android:textColor="@color/gryclr"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <Spinner
+                        android:id="@+id/spinner_state"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/spinner_background"
+                        android:textAlignment="center" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/urbanist_black"
+                        android:text="Working With"
+                        android:textColor="@color/gryclr"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <Spinner
+                        android:id="@+id/spinner_working_with"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/spinner_background"
+                        android:textAlignment="center" />
+
+                    <!--visiblity-->
+                    <RelativeLayout
+                        android:id="@+id/Rel_senior"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:id="@+id/txt_work_senior"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:fontFamily="@font/urbanist_black"
+                            android:text="Senior Name"
+                            android:textColor="@color/gryclr"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+
+                        <Spinner
+                            android:id="@+id/spinner_senior"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:layout_below="@+id/txt_work_senior"
+                            android:layout_marginTop="5dp"
+                            android:background="@drawable/spinner_background"
+                            android:textAlignment="center" />
+
+                    </RelativeLayout>
+                    <!--visiblity gone on-->
+
+                    <!--visiblity-->
+                    <RelativeLayout
+                        android:id="@+id/Rel_junior"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:id="@+id/txt_work_junior"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:fontFamily="@font/urbanist_black"
+                            android:text="Junior Name"
+                            android:textColor="@color/gryclr"
+                            android:textSize="15dp"
+                            android:textStyle="bold" />
+
+                        <Spinner
+                            android:id="@+id/spinner_junior"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:layout_below="@+id/txt_work_junior"
+                            android:layout_marginTop="5dp"
+                            android:background="@drawable/spinner_background"
+                            android:textAlignment="center" />
+
+                    </RelativeLayout>
+                    <!--visiblity gone on-->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/urbanist_black"
+                        android:text="Task Of the Day"
+                        android:textColor="@color/gryclr"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
+
+                    <Spinner
+                        android:id="@+id/spinner_task"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/spinner_background"
+                        android:textAlignment="center" />
+
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:background="@drawable/edittext_drawable">
+
+                        <LinearLayout
+                            android:id="@+id/layout_currentlocation"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/img_location"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginTop="10dp"
+                                android:src="@drawable/ic_baseline_location_on_24" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="6dp"
+                                android:layout_marginTop="13dp"
+                                android:fontFamily="@font/urbanist_black"
+                                android:text="CURRENT LOCATION"
+                                android:textColor="@color/blue"
+                                android:textSize="13sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+
+                        <TextView
+                            android:id="@+id/tv_latitude"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/layout_currentlocation"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="12dp"
+                            android:fontFamily="@font/urbanist_black"
+                            android:text="12.12378"
+                            android:textColor="@color/black"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tv_longitude"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/tv_latitude"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="12dp"
+                            android:fontFamily="@font/urbanist_black"
+                            android:text="123.12378"
+                            android:textColor="@color/black"
+                            android:textStyle="bold"
+
+                            />
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/card_camera"
+                            android:layout_width="140dp"
+                            android:layout_height="140dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginBottom="1dp"
+                            app:cardCornerRadius="18dp"
+                            app:cardElevation="0dp">
+
+                            <SurfaceView
+                                android:id="@+id/surfaceView"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent" />
+
+
+                            <ImageView
+                                android:id="@+id/imageView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_above="@id/btn_submit"
+                                android:layout_centerHorizontal="true"
+                                android:visibility="gone" />
+
+                        </androidx.cardview.widget.CardView>
+
+
+                        <View
+                            android:id="@+id/view_back"
+                            android:layout_width="wrap_content"
+                            android:layout_height="2dp"
+                            android:layout_below="@id/card_camera"
+                            android:layout_marginTop="10dp"
+                            android:background="@color/black" />
+
+                        <TextView
+                            android:id="@+id/tv_geo_address_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/view_back"
+                            android:layout_marginLeft="12dp"
+                            android:layout_marginTop="12dp"
+                            android:fontFamily="@font/urbanist_black"
+                            android:text="Geo-Address "
+                            android:textColor="@color/black" />
+
+                        <TextView
+                            android:id="@+id/tv_geo_address"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/tv_geo_address_text"
+                            android:layout_marginLeft="24dp"
+                            android:layout_marginTop="12dp"
+                            android:layout_marginBottom="18dp"
+                            android:fontFamily="@font/urbanist_bold"
+                            android:hint="xyz"
+                            android:textColor="@color/black" />
+
+
+                        <View
+                            android:id="@+id/view_map"
+                            android:layout_width="wrap_content"
+                            android:layout_height="2dp"
+                            android:layout_below="@id/tv_geo_address"
+                            android:layout_marginTop="10dp"
+                            android:background="@color/black" />
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/cardView2"
+                            android:layout_width="match_parent"
+                            android:layout_height="300dp"
+                            android:layout_below="@id/view_map"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginEnd="5dp"
+                            android:layout_marginBottom="10dp">
+
+                            <WebView
+                                android:id="@+id/webView"
+                                android:layout_width="match_parent"
+                                android:layout_height="300dp" />
+
+                        </androidx.cardview.widget.CardView>
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="25dp">
+
+
+                    <EditText
+                        android:id="@+id/ed_remarks"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginEnd="8dp"
+                        android:background="@drawable/work_info_background"
+                        android:fontFamily="@font/urbanist_bold"
+                        android:hint="Remark.."
+                        android:paddingStart="10dp"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/tv_remarks"
+                        android:layout_width="120dp"
+                        android:layout_height="32dp"
+                        android:layout_marginStart="30dp"
+                        android:background="@drawable/currentdate_background"
+                        android:fontFamily="@font/urbanist_bold"
+                        android:paddingTop="4dp"
+                        android:text="Remarks"
+                        android:textAlignment="center"
+                        android:textColor="@color/white" />
+
+
+                </RelativeLayout>
+
+            </LinearLayout>
+        </ScrollView>
+
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/text_currentDT"
+        android:layout_width="150dp"
+        android:layout_height="35dp"
+        android:layout_below="@+id/liner_attendance"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="0dp"
+        android:background="@drawable/currentdate_background"
+        android:fontFamily="@font/urbanist_black"
+        android:paddingTop="4dp"
+        android:text="DD-MM-YY"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="18dp" />
+
+    <Button
+        android:id="@+id/btn_submit"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="13dp"
+        android:background="@drawable/loginbutton_drawable"
+        android:text="SUBMIT"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+
+</RelativeLayout>
