@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="working_status">
+        <item>Select</item>
+        <item>Present</item>
+        <item>Absent</item>
+        <item>Leave</item>
+        <!-- Add more status options as needed -->
+    </string-array>
+
+    <string-array name="work_type">
+        <item>Select</item>
+        <item> From Office</item>
+        <item> From Market</item>
+        <!-- Add more status options as needed -->
+    </string-array>
+
+    <string-array name="area_work">
+        <item>Select</item>
+        <item>HQ</item>
+        <item>EX-HQ</item>
+        <item>Night Halt</item>
+        <!-- Add more status options as needed -->
+    </string-array>
+
+    <string-array name="working_with_array">
+        <item>Select</item>
+        <item>Self</item>
+        <item>With Senior</item>
+        <item>With Junior</item>
+        <!-- Add more status options as needed -->
+    </string-array>
+
+</resources>

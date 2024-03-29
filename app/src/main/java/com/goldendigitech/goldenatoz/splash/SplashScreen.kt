@@ -9,6 +9,7 @@ import android.preference.PreferenceManager
 import android.util.Log
 import com.goldendigitech.goldenatoz.MainActivity
 import com.goldendigitech.goldenatoz.R
+import com.goldendigitech.goldenatoz.attendance.AttendanceActivity
 import com.goldendigitech.goldenatoz.login.LoginScreen
 import com.goldendigitech.goldenatoz.singleToneClass.SharedPreferencesManager
 
