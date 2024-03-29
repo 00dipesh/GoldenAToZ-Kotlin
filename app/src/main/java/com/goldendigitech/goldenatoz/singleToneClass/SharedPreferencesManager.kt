@@ -28,4 +28,6 @@ class SharedPreferencesManager private constructor(context: Context) {
     fun getUserId(): Int {
         return sharedPreferences.getInt("userId", 0)
     }
+
+
 }

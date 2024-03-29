@@ -17,14 +17,14 @@ class LoginViewModel:ViewModel() {
     val loginResponse: LiveData<LoginResponse> = _loginResponse
 
     fun userLogin(loginModel: LoginModel) {
-        
+
         webServices.userLogin(loginModel).enqueue(object : Callback<LoginResponse> {
             override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
                 if (response.code() == 200) {
                     Log.d("LoginViewModel", "Login View Model: " + response.code())
 
                     _loginResponse.value = response.body()
-                    Log.e("LoginViewModel", "Login failed: ${response.code()}")
+                    Log.e("LoginViewModel", "Login Success: ${response.code()}")
 
                 } else {
 
