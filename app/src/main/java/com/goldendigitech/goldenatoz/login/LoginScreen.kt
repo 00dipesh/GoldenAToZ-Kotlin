@@ -28,6 +28,7 @@ class LoginScreen : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //    setContentView(R.layout.activity_login_screen)
+
         loginScreenBinding = ActivityLoginScreenBinding.inflate(layoutInflater)
         val view: View = loginScreenBinding.root
         setContentView(view)
@@ -68,15 +69,25 @@ class LoginScreen : AppCompatActivity() {
             false
         })
 
+        loginScreenBinding.forgotPass.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finishAffinity()
+        }
+
         loginScreenBinding.loginBtn.setOnClickListener {
 
             val email = loginScreenBinding.EdUsername.text.toString()
             // val contact = contactEditText.text.toString()
             val password = loginScreenBinding.EdPassword.text.toString()
+            if (email.isEmpty() || password.isEmpty()){
+                Toast.makeText(this, "Please enter both email and password", Toast.LENGTH_SHORT).show()
 
-            val loginModel = LoginModel(email, password)
-            viewModel.userLogin(loginModel)
+            }else{
+                val loginModel = LoginModel(email, password)
+                viewModel.userLogin(loginModel)
 
+            }
 
         }
 

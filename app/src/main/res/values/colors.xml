@@ -13,4 +13,9 @@
     <color name="gray">#808080</color>
 
     <color name="blue">#007dff</color>
+    <color name="txtclr">#42E3F8</color>
+    <color name="appclr">#F28C28</color>
+    <color name="drawermenu">#6434AD</color>
+    <color name="tabindicator">#AF90CF</color>
+
 </resources>

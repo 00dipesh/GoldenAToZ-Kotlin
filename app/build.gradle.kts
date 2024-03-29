@@ -54,4 +54,6 @@ dependencies {
     implementation ("com.squareup.retrofit2:retrofit:2.9.0")
     implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
     implementation ("com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.2")
+
+    implementation ("com.mikhaellopez:circularimageview:4.3.1") //circle Imageview
 }
