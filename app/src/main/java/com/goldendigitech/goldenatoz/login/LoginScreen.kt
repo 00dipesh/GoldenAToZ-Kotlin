@@ -14,7 +14,9 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.goldendigitech.goldenatoz.MainActivity
 import com.goldendigitech.goldenatoz.R
+import com.goldendigitech.goldenatoz.attendance.AttendanceActivity
 import com.goldendigitech.goldenatoz.databinding.ActivityLoginScreenBinding
+import com.goldendigitech.goldenatoz.singleToneClass.SharedPreferencesManager
 
 class LoginScreen : AppCompatActivity() {
 
@@ -94,7 +96,11 @@ class LoginScreen : AppCompatActivity() {
         viewModel.loginResponse.observe(this, Observer { response ->
             if (response != null) {
                 if (response.success) {
-                    val intent = Intent(this, MainActivity::class.java)
+                    // Save user ID in SharedPreferences upon successful login
+                    response.data?.let { userData ->
+                        SharedPreferencesManager.getInstance(this).saveUserId(userData.Id)
+                    }
+                    val intent = Intent(this, AttendanceActivity::class.java)
                     startActivity(intent)
                     finishAffinity()
                     Log.e("LoginViewModel", "Login failed: ${response.success}")
