@@ -39,7 +39,7 @@
                         android:textAlignment="center"
                         android:text="Name"
                         android:textColor="@color/white"
-                        android:textSize="15dp"
+                        android:textSize="15sp"
                         android:textStyle="bold"/>
 
                     <TextView
@@ -50,7 +50,7 @@
                         android:textAlignment="center"
                         android:text="Weight"
                         android:textColor="@color/white"
-                        android:textSize="15dp"
+                        android:textSize="15sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -61,7 +61,7 @@
                         android:text="Qty"
                         android:textAlignment="center"
                         android:textColor="@color/white"
-                        android:textSize="15dp"
+                        android:textSize="15sp"
                         android:textStyle="bold" />
 
 
