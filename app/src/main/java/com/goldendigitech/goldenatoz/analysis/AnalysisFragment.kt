@@ -5,56 +5,61 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
+import androidx.viewpager.widget.ViewPager
 import com.goldendigitech.goldenatoz.R
+import com.google.android.material.tabs.TabLayout
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [AnalysisFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class AnalysisFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    lateinit var viewpager_analysis :ViewPager
+    lateinit var tab_analysis :TabLayout
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_analysis, container, false)
+        val view: View = inflater.inflate(R.layout.fragment_analysis, container, false)
+
+        viewpager_analysis = view.findViewById(R.id.viewpager_analysis)
+        tab_analysis = view.findViewById(R.id.tab_analysis)
+
+        val fragmentList = listOf(
+            UserFragment(),
+            DistributorFragment(),
+            BeatFragment(),
+            RetailerFragment()
+        )
+
+        val tabTitles = arrayOf("USER", "DISTRIBUTOR", "BEAT", "RETAILER")
+
+
+        val analysisAdapter = AnalysisAdapter(childFragmentManager,fragmentList,tabTitles)
+        viewpager_analysis.adapter = analysisAdapter
+        tab_analysis.setupWithViewPager(viewpager_analysis)
+
+
+        tab_analysis.setSelectedTabIndicatorColor(resources.getColor(android.R.color.holo_red_dark))
+        tab_analysis.setTabTextColors(resources.getColor(R.color.white), resources.getColor(android.R.color.white))
+
+        tab_analysis.addOnTabSelectedListener(object :TabLayout.OnTabSelectedListener{
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+
+            }
+
+            override fun onTabUnselected(tab: TabLayout.Tab?) {
+               tab?.view?.setBackgroundColor(ContextCompat.getColor(requireContext(),android.R.color.transparent))
+            }
+
+            override fun onTabReselected(tab: TabLayout.Tab?) {
+
+            }
+
+
+        })
+        return view
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment AnalysisFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            AnalysisFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
+
 }

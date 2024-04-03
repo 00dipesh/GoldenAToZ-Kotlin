@@ -1,7 +1,7 @@
 package com.goldendigitech.goldenatoz.Performance
 
-import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -17,7 +18,13 @@ import com.goldendigitech.goldenatoz.Home.HomeModel
 import com.goldendigitech.goldenatoz.Home.HomeSubMenuAdapter
 import com.goldendigitech.goldenatoz.Home.HomeSubMenuModel
 import com.goldendigitech.goldenatoz.R
+import com.goldendigitech.goldenatoz.employee.Employee
+import com.goldendigitech.goldenatoz.employee.EmployeeViewModel
+import com.goldendigitech.goldenatoz.singleToneClass.SharedPreferencesManager
 import com.mikhaellopez.circularimageview.CircularImageView
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class PerformanceFragment : Fragment(), HomeAdapter.OnItemClickListener {
 
@@ -35,6 +42,7 @@ class PerformanceFragment : Fragment(), HomeAdapter.OnItemClickListener {
     lateinit var tv_date: TextView
     lateinit var tv_uname: TextView
 
+    lateinit var employeeViewModel:EmployeeViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,6 +52,7 @@ class PerformanceFragment : Fragment(), HomeAdapter.OnItemClickListener {
         val view: View = LayoutInflater.from(container?.context)
             .inflate(R.layout.fragment_performance, container, false)
 
+        employeeViewModel = ViewModelProvider(this).get(EmployeeViewModel::class.java)
 
         subMenuList()
         getHomeMenuList()
@@ -54,6 +63,23 @@ class PerformanceFragment : Fragment(), HomeAdapter.OnItemClickListener {
         tv_date = view.findViewById(R.id.tv_date)
         tv_uname = view.findViewById(R.id.tv_uname)
         indicatorLayout = view.findViewById(R.id.indicatorsLayout)
+
+        val employeeId = SharedPreferencesManager.getInstance(requireContext()).getUserId()
+        val currentDate = Date()
+        val dateFormat = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
+        tv_date.setText(dateFormat.format(currentDate))
+
+        employeeViewModel.employeeLiveData.observe(viewLifecycleOwner, { employee ->
+            // Update UI with employee data
+            if (employee != null) {
+                populateUI(employee)
+            }else{
+                Toast.makeText(context, "Failed to get employee details", Toast.LENGTH_SHORT).show()
+            }
+        })
+        employeeViewModel.getEmployeeData(employeeId)
+        Log.d("Selected  ID", employeeId.toString())
+// Fetch employee data
 
         rv_homemenu.setHasFixedSize(true)
         val layoutManager = GridLayoutManager(requireContext(), 3)
@@ -92,10 +118,7 @@ class PerformanceFragment : Fragment(), HomeAdapter.OnItemClickListener {
 
         return view
     }
-     override fun onItemClick(item: HomeModel) {
 
-         Toast.makeText(requireContext(), "Item clicked:", Toast.LENGTH_SHORT).show()
-     }
 
 
     private fun subMenuList() {
@@ -150,5 +173,50 @@ class PerformanceFragment : Fragment(), HomeAdapter.OnItemClickListener {
             )
         }
     }
+
+    private fun populateUI(employee: Employee) {
+        val firstName    = employee.firstName
+        val middleName = employee.middleName
+        val lastName = employee.lastName
+        val txtDesignation  = employee.designation
+
+        tv_uname!!.text ="$firstName $middleName $lastName /$txtDesignation"
+        Log.e("EmployeeViewModel", "employeeName: ${employee.firstName} \${employee.lastName")
+        Log.e("EmployeeViewModel", "username: ${employee.username}")
+    }
+
+    override fun onItemClick(model: HomeModel) {
+        Toast.makeText(requireContext(), "Item clicked:", Toast.LENGTH_SHORT).show()
+        if (model.name == "Activity Form") {
+            //startActivity(new Intent(getActivity(), "".class));
+        } else if (model.name == "Approval") {
+            //startActivity(new Intent(getActivity(), "".class));
+        } else if (model.name == "company Details") {
+            //startActivity(new Intent(getActivity(), "".class));
+        } else if (model.name == "Check out") {
+            //startActivity(new Intent(getActivity(), "".class));
+        } else if (model.name == "Distributor Visit") {
+            //startActivity(new Intent(getActivity(), "".class));
+        } else if (model.name == "Fullfillment") {
+            //startActivity(new Intent(getActivity(), "".class));
+        } else if (model.name == "Genrate Canopy Lead") {
+            //startActivity(new Intent(getActivity(), "".class));
+        } else if (model.name == "Lead Enquiry") {
+            //startActivity(new Intent(getActivity(), "".class));
+        } else if (model.name == "outlet visit") {
+            //startActivity(new Intent(getActivity(), "".class));
+        } else if (model.name == "Report") {
+            //startActivity(new Intent(getActivity(), "".class));
+        } else if (model.name == "SS/DB REgistration") {
+            //startActivity(new Intent(getActivity(), "".class));
+        } else if (model.name == "SS Visit") {
+            //startActivity(new Intent(getActivity(), "".class));
+        } else if (model.name == "Tour Plan") {
+            //startActivity(Intent(activity, SelectTourPlan::class.java))
+        } else if (model.name == "Van Sale") {
+            // startActivity(new Intent(getActivity(), "".class));
+        }
+    }
+
 
 }
