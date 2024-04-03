@@ -99,6 +99,7 @@ class LoginScreen : AppCompatActivity() {
                     // Save user ID in SharedPreferences upon successful login
                     response.data?.let { userData ->
                         SharedPreferencesManager.getInstance(this).saveUserId(userData.Id)
+                        SharedPreferencesManager.getInstance(this).saveEmail(userData.Email)
                     }
                     val intent = Intent(this, AttendanceActivity::class.java)
                     startActivity(intent)

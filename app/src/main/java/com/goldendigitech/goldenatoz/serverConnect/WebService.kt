@@ -1,5 +1,9 @@
 package com.goldendigitech.goldenatoz.serverConnect
 
+import com.goldendigitech.goldenatoz.ChangePassword.ChangepasswordModel
+import com.goldendigitech.goldenatoz.ChangePassword.ChangepasswordResponse
+import com.goldendigitech.goldenatoz.Complaint.ComplaintModel
+import com.goldendigitech.goldenatoz.Complaint.ComplaintResponse
 import com.goldendigitech.goldenatoz.attendance.AttendanceModel
 import com.goldendigitech.goldenatoz.attendance.AttendanceResponse
 import com.goldendigitech.goldenatoz.attendance.TaskResponse
@@ -16,7 +20,6 @@ import retrofit2.http.Query
 
 interface WebService {
 
-
     @POST("Api/Employee/Login")   // Login
     fun userLogin(@Body loginModel: LoginModel): Call<LoginResponse>
 
@@ -31,6 +34,12 @@ interface WebService {
 
     @GET("Api/Account/DailyTask/GetTaskIdAndNameDict")   //Task List
     fun getTaskList(): Call<TaskResponse>
+
+    @POST("Api/Account/Complaint/Add")    //add complaint
+    fun addComplaint(@Body requestComplaint : ComplaintModel) : Call<ComplaintResponse>
+
+    @POST("Api/Employee/ChangePassword")
+    fun changePasswords(@Body requestChangepasswordModel: ChangepasswordModel) : Call<ChangepasswordResponse>
 
 
 

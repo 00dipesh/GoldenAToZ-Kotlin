@@ -29,5 +29,13 @@ class SharedPreferencesManager private constructor(context: Context) {
         return sharedPreferences.getInt("userId", 0)
     }
 
+    fun saveEmail(email: String)
+    {
+        sharedPreferences.edit().putString("Email",email).apply()
+    }
+
+    fun getEmail(): String {
+        return sharedPreferences.getString("Email", "") ?: ""
+    }
 
 }
