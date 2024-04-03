@@ -17,5 +17,6 @@
     <color name="appclr">#F28C28</color>
     <color name="drawermenu">#6434AD</color>
     <color name="tabindicator">#AF90CF</color>
+    <color name="bluegrey">#CFD8DC</color>
 
 </resources>

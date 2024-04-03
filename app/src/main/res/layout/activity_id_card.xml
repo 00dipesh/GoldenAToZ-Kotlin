@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/app_background"
+        tools:context=".Idcard.IdCardActivity">
+
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@drawable/toolbar_background">
+
+            <ImageView
+                android:id="@+id/iv_back"
+                android:layout_width="32dp"
+                android:layout_height="33dp"
+                android:layout_marginEnd="8dp"
+                android:src="@drawable/ic_arrow_back" />
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="10dp"
+                android:src="@drawable/atoz_logo" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/urbanist_black"
+                android:paddingStart="20dp"
+                android:text="ID CARD"
+                android:textColor="@color/login_textcolor"
+                android:textSize="25dp"
+                android:textStyle="bold" />
+
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <TextView
+            android:id="@+id/txt_self"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/toolbar"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+            android:fontFamily="@font/urbanist_black"
+            android:text="SELF"
+            android:textColor="@color/login_textcolor"
+            android:textSize="26dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt_self"
+            android:id="@+id/txt_id"
+            android:layout_marginTop="5dp"
+            android:text="IDENTIFICATION"
+            android:layout_centerHorizontal="true"
+            android:textSize="24dp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/urbanist_bold"
+            />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_designation"
+            android:layout_alignStart="@id/draw_back"
+            android:layout_alignEnd="@id/draw_back"
+            android:layout_marginStart="35dp"
+            android:layout_marginEnd="35dp"
+            android:background="@drawable/idcard_background">
+
+            <LinearLayout
+                android:id="@+id/layout_no"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginEnd="10dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/id_noimg"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/id_no_img" />
+
+                <TextView
+                    android:id="@+id/tv_id_label"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.4"
+                    android:fontFamily="@font/urbanist_bold"
+                    android:paddingStart="10dp"
+                    android:text="ID No :"
+                    android:textColor="@color/gryclr"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+
+
+                <TextView
+                    android:id="@+id/tv_id"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.6"
+                    android:paddingStart="5dp"
+                    android:text=""
+                    android:textColor="@color/gryclr"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <!-- Department Section -->
+            <LinearLayout
+                android:id="@+id/department_leaner"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_below="@+id/layout_no"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginEnd="10dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/id_depart"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/department_img" />
+
+                <TextView
+                    android:id="@+id/tv_dept_label"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.4"
+                    android:fontFamily="@font/urbanist_bold"
+                    android:paddingStart="10dp"
+                    android:text="Dept :"
+                    android:textColor="@color/gryclr"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+
+
+                <TextView
+                    android:id="@+id/tv_dept"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.6"
+                    android:paddingStart="5dp"
+                    android:text=""
+                    android:textColor="@color/gryclr"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <!-- phone Section -->
+            <LinearLayout
+                android:id="@+id/phone_leaner"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_below="@+id/department_leaner"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginEnd="10dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/id_callimg"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/phonecall_img" />
+
+                <TextView
+                    android:id="@+id/tv_mob_label"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.4"
+                    android:fontFamily="@font/urbanist_bold"
+                    android:paddingStart="10dp"
+                    android:text="Phone :"
+                    android:textColor="@color/gryclr"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+
+
+                <TextView
+                    android:id="@+id/tv_mbno"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.6"
+                    android:paddingStart="5dp"
+                    android:text=""
+                    android:textColor="@color/gryclr"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <!--Email Section-->
+            <LinearLayout
+                android:id="@+id/email_leaner"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_below="@+id/phone_leaner"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginEnd="10dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/id_emailcard"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/emailcard_img" />
+
+                <TextView
+                    android:id="@+id/tv_email_label"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.4"
+                    android:fontFamily="@font/urbanist_bold"
+                    android:paddingStart="10dp"
+                    android:text="Email :"
+                    android:textColor="@color/gryclr"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+
+
+                <TextView
+                    android:id="@+id/tv_email"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.6"
+                    android:text=""
+                    android:textColor="@color/gryclr"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <!--DOB Section-->
+            <LinearLayout
+                android:id="@+id/dob_leaner"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_below="@+id/email_leaner"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginEnd="10dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/id_dobcard"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/dob_imgcard" />
+
+                <TextView
+                    android:id="@+id/tv_dob_label"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.4"
+                    android:fontFamily="@font/urbanist_bold"
+                    android:paddingStart="10dp"
+                    android:text="DOB :"
+                    android:textColor="@color/gryclr"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+
+
+                <TextView
+                    android:id="@+id/tv_dob"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.6"
+                    android:text=""
+                    android:textColor="@color/gryclr"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <!-- blood group Section -->
+            <LinearLayout
+                android:id="@+id/blood_leaner"
+                android:layout_marginBottom="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_below="@+id/dob_leaner"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginEnd="10dp"
+                android:orientation="horizontal">
+
+
+                <ImageView
+                    android:id="@+id/id_bldgrp"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/bldgrp_img" />
+
+                <TextView
+                    android:id="@+id/tv_bldgrp_label"
+                    android:text="Blood :"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.4"
+                    android:fontFamily="@font/urbanist_bold"
+                    android:paddingStart="10dp"
+                    android:textColor="@color/gryclr"
+                    android:textSize="15dp"
+                    android:textStyle="bold"  />
+
+
+                <TextView
+                    android:id="@+id/tv_bldgrp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.6"
+                    android:text=""
+                    android:textColor="@color/gryclr"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+        </RelativeLayout>
+
+
+        <ImageView
+            android:id="@+id/draw_back"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_below="@+id/photoImageView"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="-40dp"
+            android:layout_marginEnd="15dp"
+            android:background="@drawable/id_card_drawable" />
+
+        <ImageView
+            android:id="@+id/photoImageView"
+            android:layout_width="90dp"
+            android:layout_height="80dp"
+            android:layout_below="@+id/txt_id"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:src="@drawable/imgnotfound" />
+
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/photoImageView"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/urbanist_black"
+            android:text=""
+            android:textColor="@color/gryclr"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_designation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_name"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="@font/urbanist_bold"
+            android:text=""
+            android:textColor="@color/gryclr"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginTop="5dp"/>
+
+
+
+    </RelativeLayout>
