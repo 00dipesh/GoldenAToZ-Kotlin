@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit
 
 object Constant {
 
-    private const val BASE_URL = "http://192.168.29.12:60302/"
+    private const val BASE_URL = "https://goldendigitech.com/Goldenatozapi/"
 
 
     private val retrofit: Retrofit by lazy {
