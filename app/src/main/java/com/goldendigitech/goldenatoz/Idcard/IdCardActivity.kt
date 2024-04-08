@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.goldendigitech.goldenatoz.R
+import com.goldendigitech.goldenatoz.Util.FormatterUtil
 import com.goldendigitech.goldenatoz.databinding.ActivityComplaintBinding
 import com.goldendigitech.goldenatoz.databinding.ActivityIdCardBinding
 import com.goldendigitech.goldenatoz.employee.Employee
@@ -44,7 +45,8 @@ class IdCardActivity : AppCompatActivity() {
     }
 
     private fun updateUI(employee: Employee) {
-        val firstName = employee.firstName
+
+        val firstName = FormatterUtil.StringUtils.defaultIfNull(employee.firstName)
         val middleName = employee.middleName
         val lastName = employee.lastName
         val contact = employee.contact
