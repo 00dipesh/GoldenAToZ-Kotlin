@@ -14,8 +14,13 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager.widget.ViewPager
 import com.goldendigitech.goldenatoz.Adapter.TabLayoutAdapter
+import com.goldendigitech.goldenatoz.MyProfile.MyProfile
+import com.goldendigitech.goldenatoz.employee.Employee
+import com.goldendigitech.goldenatoz.employee.EmployeeViewModel
+import com.goldendigitech.goldenatoz.singleToneClass.SharedPreferencesManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -46,14 +51,17 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     lateinit var logoutButton :ImageView
     lateinit var tabLayout:TabLayout
     lateinit var viewPager: ViewPager
-
+    private lateinit var employeeViewModel: EmployeeViewModel
+    var employeeId :Int =0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         //setSupportActionBar()
+        employeeViewModel = ViewModelProvider(this).get(EmployeeViewModel::class.java)
 
+        employeeId = SharedPreferencesManager.getInstance(this).getUserId()
 
         drawer = findViewById(R.id.drawer)
         rel_nav_myprofile = findViewById(R.id.rel_nav_myprofile)
@@ -77,6 +85,16 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         iv_userprofile = findViewById(R.id.iv_userprofile)
         logoutButton =findViewById(R.id.logoutButton)
         bottomNavigationView = findViewById(R.id.bottom_nav)
+
+        employeeViewModel.getEmployeeData(employeeId)
+        employeeViewModel.employeeLiveData.observe(this, { employee ->
+            employee?.let {
+                updateUI(employee)
+            } ?: run {
+                Toast.makeText(this@MainActivity, "Failed to get employee details", Toast.LENGTH_SHORT).show()
+            }
+        })
+
 
         rel_nav_myprofile!!.setOnClickListener(this)
         rel_nav_getretailers!!.setOnClickListener(this)
@@ -123,6 +141,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         fab.setOnClickListener(View.OnClickListener { view -> showPopupMenu(view) })
        // logoutButton.setOnClickListener(View.OnClickListener { doLogoutUser() })
 
+
     }
 
     val nav = BottomNavigationView.OnNavigationItemSelectedListener { menuItems ->
@@ -143,8 +162,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         when (view.id) {
             R.id.rel_nav_myprofile -> {
                 // Handle click for My Profile
-                //val intent = Intent(this@MainActivity, MyProfile::class.java)
-                //startActivity(intent)
+                val intent = Intent(this@MainActivity, MyProfile::class.java)
+                startActivity(intent)
             }
             R.id.rel_nav_getretailers -> {
                 // Handle click for Get Retailers
@@ -206,5 +225,22 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             }
         }
         popupMenu.show()
+    }
+
+    private fun updateUI(employee : Employee){
+
+        val firstName =employee.firstName
+        val middleName = employee.middleName
+        val lastName = employee.lastName
+        val employeeEmail = employee.email
+        val contact = employee.contact
+        val lastSyncDate = employee.lastSyncDate
+        val appVersion = employee.appVersion
+
+        tv_name!!.text ="$firstName $middleName $lastName"
+        tv_email!!.text = employeeEmail
+        tv_contactno!!.text = contact
+        tv_lastsync!!.text = lastSyncDate
+        tv_version!!.text = appVersion
     }
 }

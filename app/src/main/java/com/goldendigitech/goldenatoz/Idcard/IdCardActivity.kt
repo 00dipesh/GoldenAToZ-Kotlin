@@ -45,6 +45,7 @@ class IdCardActivity : AppCompatActivity() {
     }
 
     private fun updateUI(employee: Employee) {
+
         val firstName = FormatterUtil.StringUtils.defaultIfNull(employee.firstName)
         val middleName = employee.middleName
         val lastName = employee.lastName

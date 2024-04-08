@@ -1,5 +1,6 @@
 package com.goldendigitech.goldenatoz.Feedback
 
+
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -82,5 +83,6 @@ class FeedbackForm : AppCompatActivity() {
         }
 
         return true
+
     }
 }
