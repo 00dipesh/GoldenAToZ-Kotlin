@@ -4,6 +4,8 @@ import com.goldendigitech.goldenatoz.ChangePassword.ChangepasswordModel
 import com.goldendigitech.goldenatoz.ChangePassword.ChangepasswordResponse
 import com.goldendigitech.goldenatoz.Complaint.ComplaintModel
 import com.goldendigitech.goldenatoz.Complaint.ComplaintResponse
+import com.goldendigitech.goldenatoz.Feedback.FeedbackModel
+import com.goldendigitech.goldenatoz.Feedback.FeedbackResponse
 import com.goldendigitech.goldenatoz.attendance.AttendanceModel
 import com.goldendigitech.goldenatoz.attendance.AttendanceResponse
 import com.goldendigitech.goldenatoz.attendance.TaskResponse
@@ -40,6 +42,10 @@ interface WebService {
 
     @POST("Api/Employee/ChangePassword")
     fun changePasswords(@Body requestChangepasswordModel: ChangepasswordModel) : Call<ChangepasswordResponse>
+
+    @POST("Api/Account/Feedback/Add")
+    fun  addFeedback(@Body requestFeedback : FeedbackModel) : Call<FeedbackResponse>
+
 
 
 
