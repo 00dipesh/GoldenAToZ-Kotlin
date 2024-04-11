@@ -1,0 +1,976 @@
+<?xml version="1.0" encoding="utf-8"?>
+ <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#F3F2F2"
+        android:orientation="vertical"
+     tools:context=".UpdatePersonalInfo.UpdatePersonalInfo">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@drawable/toolbar_background">
+
+            <ImageView
+                android:id="@+id/iv_back"
+                android:layout_width="32dp"
+                android:layout_height="33dp"
+                android:layout_marginEnd="8dp"
+                android:src="@drawable/ic_arrow_back" />
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="10dp"
+                android:src="@drawable/atoz_logo" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/urbanist_black"
+                android:paddingStart="15dp"
+                android:text="Edit Personal Info"
+                android:textColor="@color/login_textcolor"
+                android:textSize="25dp"
+                android:textStyle="bold" />
+
+
+        </androidx.appcompat.widget.Toolbar>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/personalinfo_back"
+                android:visibility="gone">
+
+                <com.mikhaellopez.circularimageview.CircularImageView
+                    android:id="@+id/iv_profile"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="20dp"
+                    android:src="@drawable/imgnotfound"
+                    app:civ_border_color="@color/white"
+                    app:civ_border_width="1dp" />
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/iv_profile"
+                    android:layout_centerInParent="true"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginBottom="10dp">
+
+                    <TextView
+                        android:id="@+id/tv_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:text=""
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
+
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:padding="5dp"
+                        app:cardCornerRadius="15dp"
+                        app:cardElevation="10dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:orientation="vertical">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp">
+
+                                <ImageView
+                                    android:id="@+id/iv_details"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="5dp"
+                                    android:background="@drawable/ic_baseline_person_outline_24" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_toRightOf="@+id/iv_details"
+                                    android:text="Personal Details"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="2dp"
+                                    android:layout_below="@+id/iv_details"
+                                    android:layout_marginTop="3dp"
+                                    android:background="@color/gryclr" />
+                            </RelativeLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:padding="5dp">
+
+                                <TextView
+                                    android:id="@+id/lbl_firstname"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_weight="0.3"
+                                    android:padding="5dp"
+                                    android:text="First Name"
+                                    android:textColor="@color/gryclr"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold" />
+
+                                <EditText
+                                    android:id="@+id/ed_fname"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.7"
+                                    android:background="@drawable/edittext_drawable"
+                                    android:padding="5dp"
+                                    android:textColor="@color/black"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:padding="5dp">
+
+                                <TextView
+                                    android:id="@+id/lbl_middlename"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_weight="0.3"
+                                    android:padding="5dp"
+                                    android:text="Middle Name"
+                                    android:textColor="@color/gryclr"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold" />
+
+                                <EditText
+                                    android:id="@+id/ed_mname"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.7"
+                                    android:background="@drawable/edittext_drawable"
+                                    android:padding="5dp"
+                                    android:textColor="@color/black"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:padding="5dp">
+
+                                <TextView
+                                    android:id="@+id/lbl_lastname"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_weight="0.3"
+                                    android:padding="5dp"
+                                    android:text="Last Name"
+                                    android:textColor="@color/gryclr"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold" />
+
+                                <EditText
+                                    android:id="@+id/ed_lname"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.7"
+                                    android:background="@drawable/edittext_drawable"
+                                    android:padding="5dp"
+                                    android:textColor="@color/black"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:padding="5dp">
+
+                                <TextView
+                                    android:id="@+id/lbl_phone"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_weight="0.3"
+                                    android:padding="5dp"
+                                    android:text="Phone"
+                                    android:textColor="@color/gryclr"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold" />
+
+                                <EditText
+                                    android:id="@+id/ed_phone"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.7"
+                                    android:background="@drawable/edittext_drawable"
+                                    android:inputType="number"
+                                    android:maxLength="12"
+                                    android:padding="5dp"
+                                    android:textColor="@color/black"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:padding="5dp">
+
+                                <TextView
+                                    android:id="@+id/lbl_alphone"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_weight="0.3"
+                                    android:background="@color/white"
+                                    android:padding="5dp"
+                                    android:text="Alternate No"
+                                    android:textColor="@color/gryclr"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold" />
+
+                                <EditText
+                                    android:id="@+id/ed_alternatephone"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.7"
+                                    android:background="@drawable/edittext_drawable"
+                                    android:inputType="number"
+                                    android:maxLength="12"
+                                    android:padding="5dp"
+                                    android:textColor="@color/black"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold"
+                                    tools:ignore="TextFields" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:padding="5dp">
+
+                                <TextView
+                                    android:id="@+id/lbl_dob"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_weight="0.3"
+                                    android:padding="5dp"
+                                    android:text="DOB"
+                                    android:textColor="@color/gryclr"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/ed_dob"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.7"
+                                    android:background="@drawable/edittext_drawable"
+                                    android:padding="5dp"
+                                    android:text="Select Date"
+                                    android:textColor="@color/black"
+                                    android:textSize="14sp"
+
+                                    />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:padding="5dp">
+
+                                <TextView
+                                    android:id="@+id/lbl_gender"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_weight="0.3"
+                                    android:padding="5dp"
+                                    android:text="Gender"
+                                    android:textColor="@color/gryclr"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold" />
+
+                                <Spinner
+                                    android:id="@+id/ed_gender"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.7"
+                                    android:padding="5dp"
+                                    android:singleLine="true"
+                                    android:textColor="@color/black"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:padding="5dp">
+
+                                <TextView
+                                    android:id="@+id/lbl_bldgrp"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_weight="0.3"
+                                    android:padding="5dp"
+                                    android:text="Blood Group"
+                                    android:textColor="@color/gryclr"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold" />
+
+                                <Spinner
+                                    android:id="@+id/ed_bloodgroup"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.7"
+                                    android:padding="5dp"
+                                    android:singleLine="true"
+                                    android:textColor="@color/black"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:padding="5dp">
+
+                                <TextView
+                                    android:id="@+id/lbl_address"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_weight="0.3"
+                                    android:padding="5dp"
+                                    android:text="Address"
+                                    android:textColor="@color/gryclr"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold" />
+
+                                <EditText
+                                    android:id="@+id/ed_address"
+                                    android:layout_width="0dp"
+                                    android:layout_height="70dp"
+                                    android:layout_weight="0.7"
+                                    android:background="@drawable/edittext_drawable"
+                                    android:gravity="top"
+                                    android:hint=""
+                                    android:inputType="text"
+                                    android:padding="5dp"
+                                    android:singleLine="false"
+                                    android:textColor="@color/black"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <LinearLayout
+                                    android:id="@+id/ll_paddress"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:padding="5dp">
+
+                                    <TextView
+                                        android:id="@+id/lbl_paddress"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_vertical"
+                                        android:layout_weight="0.3"
+                                        android:padding="5dp"
+                                        android:text="Permant Address"
+                                        android:textColor="@color/gryclr"
+                                        android:textSize="14sp"
+                                        android:textStyle="bold" />
+
+                                    <EditText
+                                        android:id="@+id/ed_paddress"
+                                        android:layout_width="0dp"
+                                        android:layout_height="70dp"
+                                        android:layout_weight="0.7"
+                                        android:background="@drawable/edittext_drawable"
+                                        android:gravity="top"
+                                        android:hint=""
+                                        android:inputType="text"
+                                        android:padding="5dp"
+                                        android:textColor="@color/black"
+                                        android:textStyle="bold" />
+                                </LinearLayout>
+
+                                <CheckBox
+                                    android:id="@+id/ch_sameasaddress"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/ll_paddress"
+                                    android:layout_marginStart="110dp"
+                                    android:text="Same as Address" />
+                            </RelativeLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:padding="5dp">
+
+                                <TextView
+                                    android:id="@+id/lbl_maritialstatus"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_weight="0.3"
+                                    android:padding="5dp"
+                                    android:text="Maritual Status"
+                                    android:textColor="@color/gryclr"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold" />
+
+                                <Spinner
+                                    android:id="@+id/ed_maritualstatus"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.7"
+                                    android:padding="5dp"
+                                    android:textColor="@color/black"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:padding="5dp">
+
+                                <TextView
+                                    android:id="@+id/lbl_qualification"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_weight="0.3"
+                                    android:padding="5dp"
+                                    android:text="Qualification"
+                                    android:textColor="@color/gryclr"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold" />
+
+                                <EditText
+                                    android:id="@+id/ed_qualification"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.7"
+                                    android:background="@drawable/edittext_drawable"
+                                    android:hint=""
+                                    android:inputType="text"
+                                    android:padding="5dp"
+                                    android:textColor="@color/black"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:padding="5dp">
+
+                                <TextView
+                                    android:id="@+id/lbl_skill"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_weight="0.3"
+                                    android:padding="5dp"
+                                    android:text="Skill"
+                                    android:textColor="@color/gryclr"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold" />
+
+                                <EditText
+                                    android:id="@+id/ed_skill"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.7"
+                                    android:background="@drawable/edittext_drawable"
+                                    android:hint=""
+                                    android:inputType="text"
+                                    android:padding="5dp"
+                                    android:textColor="@color/black"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginBottom="5dp"
+                                android:padding="5dp">
+
+                                <TextView
+                                    android:id="@+id/lbl_wrkexperience"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_weight="0.3"
+                                    android:padding="5dp"
+                                    android:text="Work Experience"
+                                    android:textColor="@color/gryclr"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold" />
+
+                                <EditText
+                                    android:id="@+id/ed_wrkexperience"
+                                    android:layout_width="0dp"
+                                    android:layout_height="50dp"
+                                    android:layout_weight="0.7"
+                                    android:background="@drawable/edittext_drawable"
+                                    android:inputType="number"
+                                    android:padding="5dp"
+                                    android:textColor="@color/black"
+                                    android:textStyle="bold" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:padding="5dp">
+
+                                <TextView
+                                    android:id="@+id/lbl_doj"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_weight="0.3"
+                                    android:padding="5dp"
+                                    android:text="Date of Joining"
+                                    android:textColor="@color/gryclr"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/ed_doj"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.7"
+                                    android:background="@drawable/edittext_drawable"
+                                    android:padding="5dp"
+                                    android:text="Select Date"
+                                    android:textColor="@color/black"
+                                    android:textSize="14sp"
+
+                                    />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:padding="5dp">
+
+                                <TextView
+                                    android:id="@+id/lbl_dept"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_weight="0.3"
+                                    android:padding="5dp"
+                                    android:text="Department"
+                                    android:textColor="@color/gryclr"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold" />
+
+                                <EditText
+                                    android:id="@+id/ed_dept"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.7"
+                                    android:background="@drawable/edittext_drawable"
+                                    android:hint=""
+                                    android:inputType="text"
+                                    android:padding="5dp"
+                                    android:textColor="@color/black"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:padding="5dp">
+
+                                <TextView
+                                    android:id="@+id/lbl_designation"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_weight="0.3"
+                                    android:padding="5dp"
+                                    android:text="Designation"
+                                    android:textColor="@color/gryclr"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold" />
+
+                                <EditText
+                                    android:id="@+id/ed_designation"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.7"
+                                    android:background="@drawable/edittext_drawable"
+                                    android:hint=""
+                                    android:inputType="text"
+                                    android:padding="5dp"
+                                    android:textColor="@color/black"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:layout_width="200dp"
+                                android:layout_height="50dp"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="20dp"
+                                android:layout_marginBottom="20dp"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/tv_save"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="45dp"
+                                    android:background="@drawable/loginbutton_drawable"
+                                    android:gravity="center"
+                                    android:padding="5dp"
+                                    android:text="Save"
+                                    android:textAlignment="center"
+                                    android:textColor="#FFFFFF"
+                                    android:textSize="18dp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cv_documents"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:padding="5dp"
+                        app:cardCornerRadius="15dp"
+                        app:cardElevation="10dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:orientation="vertical">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp">
+
+                                <ImageView
+                                    android:id="@+id/iv_documentdetails"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="5dp"
+                                    android:background="@drawable/ic_baseline_insert_drive_file_24" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_toRightOf="@+id/iv_documentdetails"
+                                    android:text="Document Details"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="2dp"
+                                    android:layout_below="@+id/iv_documentdetails"
+                                    android:layout_marginTop="3dp"
+                                    android:background="@color/gryclr" />
+                            </RelativeLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:padding="5dp">
+
+                                <TextView
+                                    android:id="@+id/lbl_photo"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.4"
+                                    android:padding="5dp"
+                                    android:text="Photo"
+                                    android:textColor="@color/gryclr"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/tv_photo"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="20dp"
+                                    android:layout_marginRight="20dp"
+                                    android:layout_weight="0.6"
+                                    android:background="@drawable/text_background"
+                                    android:drawableRight="@drawable/ic_baseline_insert_drive_file_24"
+                                    android:padding="5dp"
+                                    android:text="Upload Photo"
+                                    android:textColor="@color/black"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:padding="5dp">
+
+                                <TextView
+                                    android:id="@+id/lbl_sign"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.4"
+                                    android:padding="5dp"
+                                    android:text="Sign"
+                                    android:textColor="@color/gryclr"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold"
+                                    tools:ignore="HardcodedText" />
+
+                                <TextView
+                                    android:id="@+id/tv_sign"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="20dp"
+                                    android:layout_marginRight="20dp"
+                                    android:layout_weight="0.6"
+                                    android:background="@drawable/text_background"
+                                    android:drawableRight="@drawable/ic_baseline_insert_drive_file_24"
+                                    android:padding="5dp"
+                                    android:text="Upload Sign"
+                                    android:textColor="@color/black"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:padding="5dp">
+
+                                <TextView
+                                    android:id="@+id/lbl_resume"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.4"
+                                    android:padding="5dp"
+                                    android:text="Resume"
+                                    android:textColor="@color/gryclr"
+                                    android:textSize="14dp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/tv_uploadresume"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="20dp"
+                                    android:layout_marginRight="20dp"
+                                    android:layout_weight="0.6"
+                                    android:background="@drawable/text_background"
+                                    android:drawableRight="@drawable/ic_baseline_insert_drive_file_24"
+                                    android:padding="5dp"
+                                    android:text="Upload Resume"
+                                    android:textColor="@color/black"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold" />
+
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:padding="5dp">
+
+                                <TextView
+                                    android:id="@+id/lbl_adharcard"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.4"
+                                    android:padding="5dp"
+                                    android:text="Adhar Card"
+                                    android:textColor="@color/gryclr"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/tv_adharcard"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="20dp"
+                                    android:layout_marginRight="20dp"
+                                    android:layout_weight="0.6"
+                                    android:background="@drawable/text_background"
+                                    android:drawableRight="@drawable/ic_baseline_insert_drive_file_24"
+                                    android:padding="5dp"
+                                    android:text="Upload Adharcard"
+                                    android:textColor="@color/black"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:padding="5dp">
+
+                                <TextView
+                                    android:id="@+id/lbl_pancard"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.4"
+                                    android:padding="5dp"
+                                    android:text="Pan Card"
+                                    android:textColor="@color/gryclr"
+                                    android:textSize="14dp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/tv_pancard"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="20dp"
+                                    android:layout_marginRight="20dp"
+                                    android:layout_weight="0.6"
+                                    android:background="@drawable/text_background"
+                                    android:drawableRight="@drawable/ic_baseline_insert_drive_file_24"
+                                    android:padding="5dp"
+                                    android:text="Upload Pancard"
+                                    android:textColor="@color/black"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:padding="5dp">
+
+                                <TextView
+                                    android:id="@+id/lbl_certificate"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.4"
+                                    android:padding="5dp"
+                                    android:text="Certificate"
+                                    android:textColor="@color/gryclr"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/tv_certificate"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="20dp"
+                                    android:layout_marginRight="20dp"
+                                    android:layout_weight="0.6"
+                                    android:background="@drawable/text_background"
+                                    android:drawableRight="@drawable/ic_baseline_insert_drive_file_24"
+                                    android:padding="5dp"
+                                    android:text="Upload Degree Certificate"
+                                    android:textColor="@color/black"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold"
+                                    tools:ignore="HardcodedText" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+
+                    </androidx.cardview.widget.CardView>
+
+
+                </LinearLayout>
+
+
+            </ScrollView>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
