@@ -17,6 +17,7 @@ class FeedbackForm : AppCompatActivity() {
 
     lateinit var feedbackFormBinding: ActivityFeedbackFormBinding
     lateinit var feedbackViewModel: FeedbackViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         feedbackFormBinding = ActivityFeedbackFormBinding.inflate(layoutInflater)
