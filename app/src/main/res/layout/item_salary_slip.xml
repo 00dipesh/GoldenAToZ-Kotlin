@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="70dp"
+    android:layout_margin="5dp">
+
+    <LinearLayout
+        android:id="@+id/ll_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@drawable/salary_item">
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:background="@drawable/baseline_all_inbox_24"
+            android:layout_gravity="center"
+            android:layout_marginStart="5dp"
+            />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_gravity="center">
+
+            <TextView
+                android:id="@+id/tv_month"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="June"
+                android:textSize="16dp"
+                android:padding="3dp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:fontFamily="@font/manjari_bold"
+                android:textAllCaps="true"/>
+
+            <TextView
+                android:id="@+id/tv_salary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="$28,200"
+                android:textSize="16sp"
+                android:padding="3dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="8dp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:visibility="gone"
+                />
+
+            <TextView
+                android:id="@+id/tv_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="01/06/2023 - 30-06-2023"
+                android:textSize="16sp"
+                android:padding="5dp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:layout_marginBottom="5dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="5dp"
+                android:letterSpacing="0.02"
+                />
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

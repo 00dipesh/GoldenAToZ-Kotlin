@@ -30,6 +30,13 @@
             android:name=".TourPlan.SelectTourPlanActivity"
             android:exported="false" />
         <activity
+            android:name=".UpdatePersonalInfo.UpdatePersonalInfo"
+            android:exported="false" />
+        <activity
+            android:name=".SalarySlip.SalarySlipView"
+            android:exported="false" />
+
+        <activity
             android:name=".PersonalInfo.PersonalInfo"
             android:exported="false" />
         <activity
@@ -74,6 +81,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.goldendigitech.goldenatoz.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
     </application>
 
 </manifest>

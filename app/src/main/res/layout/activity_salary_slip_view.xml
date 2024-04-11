@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+ <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".SalarySlip.SalarySlipView">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@drawable/toolbar_background">
+
+            <ImageView
+                android:id="@+id/iv_back"
+                android:layout_width="32dp"
+                android:layout_height="33dp"
+                android:layout_marginEnd="8dp"
+                android:src="@drawable/ic_arrow_back" />
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="10dp"
+                android:src="@drawable/atoz_logo" />
+
+            <TextView
+                android:id="@+id/tv_pdfname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/urbanist_black"
+                android:paddingStart="20dp"
+                android:text=""
+                android:textColor="@color/login_textcolor"
+                android:textSize="25dp"
+                android:textStyle="bold" />
+        </androidx.appcompat.widget.Toolbar>
+
+
+
+
+    </LinearLayout>
