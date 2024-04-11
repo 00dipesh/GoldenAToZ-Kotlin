@@ -38,4 +38,11 @@ class SharedPreferencesManager private constructor(context: Context) {
         return sharedPreferences.getString("Email", "") ?: ""
     }
 
+    fun clearUserData() {
+        sharedPreferences.edit().clear().apply(){
+            remove("userId")
+            remove("Email")
+        }.apply()
+    }
+
 }

@@ -1,5 +1,6 @@
 package com.goldendigitech.goldenatoz.Performance
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -18,6 +19,7 @@ import com.goldendigitech.goldenatoz.Home.HomeModel
 import com.goldendigitech.goldenatoz.Home.HomeSubMenuAdapter
 import com.goldendigitech.goldenatoz.Home.HomeSubMenuModel
 import com.goldendigitech.goldenatoz.R
+import com.goldendigitech.goldenatoz.TourPlan.SelectTourPlanActivity
 import com.goldendigitech.goldenatoz.employee.Employee
 import com.goldendigitech.goldenatoz.employee.EmployeeViewModel
 import com.goldendigitech.goldenatoz.singleToneClass.SharedPreferencesManager
@@ -212,7 +214,7 @@ class PerformanceFragment : Fragment(), HomeAdapter.OnItemClickListener {
         } else if (model.name == "SS Visit") {
             //startActivity(new Intent(getActivity(), "".class));
         } else if (model.name == "Tour Plan") {
-            //startActivity(Intent(activity, SelectTourPlan::class.java))
+            startActivity(Intent(activity, SelectTourPlanActivity::class.java))
         } else if (model.name == "Van Sale") {
             // startActivity(new Intent(getActivity(), "".class));
         }

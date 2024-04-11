@@ -1,0 +1,8 @@
+package com.goldendigitech.goldenatoz.StateAndCity
+
+data class GetCityModel (
+
+    var Success:Boolean,
+    var data: Map<String, String> = emptyMap(),
+    var Message:String
+)
