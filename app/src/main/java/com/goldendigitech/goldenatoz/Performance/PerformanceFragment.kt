@@ -21,6 +21,7 @@ import com.goldendigitech.goldenatoz.Home.HomeModel
 import com.goldendigitech.goldenatoz.Home.HomeSubMenuAdapter
 import com.goldendigitech.goldenatoz.Home.HomeSubMenuModel
 import com.goldendigitech.goldenatoz.R
+import com.goldendigitech.goldenatoz.StoreVisit.StoreVisitActivity
 import com.goldendigitech.goldenatoz.TourPlan.SelectTourPlanActivity
 import com.goldendigitech.goldenatoz.employee.DocumentViewModel
 import com.goldendigitech.goldenatoz.employee.Employee
@@ -76,36 +77,38 @@ class PerformanceFragment : Fragment(), HomeAdapter.OnItemClickListener {
         val dateFormat = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
         tv_date.setText(dateFormat.format(currentDate))
 
-        employeeViewModel.employeeLiveData.observe(viewLifecycleOwner, { employee ->
+        employeeViewModel.employeeLiveData.observe(viewLifecycleOwner) { employee ->
             // Update UI with employee data
             if (employee != null) {
                 populateUI(employee)
-            }else{
+            } else {
                 Toast.makeText(context, "Failed to get employee details", Toast.LENGTH_SHORT).show()
             }
-        })
+        }
         // Fetch employee data
         employeeViewModel.getEmployeeData(employeeId)
         Log.d("Selected  ID", employeeId.toString())
 
 
 
-        documentViewModel.documentLiveData.observe(viewLifecycleOwner,{documents ->
+        documentViewModel.documentLiveData.observe(viewLifecycleOwner) { documents ->
             documents?.let {
                 // Assuming you want to display the first photo in the list
                 if (documents.isNotEmpty()) {
-                    val firstPhoto = documents.firstOrNull { it.fileName == "Photo" } // Assuming "Photo" is the fileName of the photo
+                    val firstPhoto =
+                        documents.firstOrNull { it.fileName == "Photo" } // Assuming "Photo" is the fileName of the photo
                     firstPhoto?.let {
                         // Decode the Base64 string and set it to ImageView
                         val decodedBytes = Base64.decode(it.fileContent, Base64.DEFAULT)
-                        val bitmap = BitmapFactory.decodeByteArray(decodedBytes, 0, decodedBytes.size)
+                        val bitmap =
+                            BitmapFactory.decodeByteArray(decodedBytes, 0, decodedBytes.size)
                         iv_userprofile.setImageBitmap(bitmap)
                     }
                 } else {
                     // Handle case where there are no documents
                 }
             }
-        })
+        }
 
         documentViewModel.getDocumentsByEmployeeId(employeeId)
 
@@ -183,7 +186,7 @@ class PerformanceFragment : Fragment(), HomeAdapter.OnItemClickListener {
             HomeModel(R.drawable.iv_leadenquiry, "Lead Enquiry"),
             HomeModel(R.drawable.iv_outletchain, "outlet visit"),
             HomeModel(R.drawable.iv_reports, "Report"),
-            HomeModel(R.drawable.iv_ssdbregistration, "SS/DB REgistration"),
+            HomeModel(R.drawable.iv_ssdbregistration, "SS/DB Registration"),
             HomeModel(R.drawable.iv_ssvisit, "SS Visit"),
             HomeModel(R.drawable.iv_tourplan, "Tour Plan"),
             HomeModel(R.drawable.iv_vansale, "Van Sale")
@@ -235,8 +238,8 @@ class PerformanceFragment : Fragment(), HomeAdapter.OnItemClickListener {
             //startActivity(new Intent(getActivity(), "".class));
         } else if (model.name == "Report") {
             //startActivity(new Intent(getActivity(), "".class));
-        } else if (model.name == "SS/DB REgistration") {
-            //startActivity(new Intent(getActivity(), "".class));
+        } else if (model.name == "SS/DB Registration") {
+            startActivity(Intent(activity, StoreVisitActivity::class.java))
         } else if (model.name == "SS Visit") {
             //startActivity(new Intent(getActivity(), "".class));
         } else if (model.name == "Tour Plan") {
