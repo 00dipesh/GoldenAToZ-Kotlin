@@ -10,9 +10,9 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        gradlePluginPortal()
     }
 }
-
 rootProject.name = "GoldenATOZ"
 include(":app")
  

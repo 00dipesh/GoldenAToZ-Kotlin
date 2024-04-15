@@ -49,4 +49,18 @@
         <item>Married</item>
         <item>Divorced</item>
     </string-array>
+
+
+    <string-array name="leavetype">
+        <item>Select Leave Type</item>
+        <item>Sick Leave</item>
+        <item>Casual Leave</item>
+        <item>Personal Leave</item>
+    </string-array>
+
+    <string-array name="leaveperiod">
+        <item>Select Period</item>
+        <item>Full Day</item>
+        <item>Half Day</item>
+    </string-array>
 </resources>

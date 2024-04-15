@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.goldendigitech.goldenatoz.MainActivity
+import com.goldendigitech.goldenatoz.MyProfile.MyProfile
 import com.goldendigitech.goldenatoz.R
 import com.goldendigitech.goldenatoz.attendance.AttendanceViewModel
 import com.goldendigitech.goldenatoz.databinding.ActivityAttendanceBinding
@@ -66,6 +67,14 @@ class ComplaintActivity : AppCompatActivity() {
                 Toast.makeText(this, "Null response received", Toast.LENGTH_SHORT).show()
             }
         })
+
+        // Set up the back button click listener
+        complaintBinding.ivBack.setOnClickListener(View.OnClickListener {
+            val i: Intent = Intent(this@ComplaintActivity, MyProfile::class.java)
+            startActivity(i)
+            finishAffinity()
+        })
+
 
     }
 

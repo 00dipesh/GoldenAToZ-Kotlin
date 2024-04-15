@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.goldendigitech.goldenatoz.MainActivity
+import com.goldendigitech.goldenatoz.MyProfile.MyProfile
 import com.goldendigitech.goldenatoz.databinding.ActivityChangepasswordBinding
 import com.goldendigitech.goldenatoz.singleToneClass.SharedPreferencesManager
 
@@ -64,6 +65,13 @@ class ChangepasswordActivity : AppCompatActivity() {
                 Toast.makeText(this, "Null response received", Toast.LENGTH_SHORT).show()
             }
 
+        })
+
+        // Set up the back button click listener
+        changepasswordBinding.ivBack.setOnClickListener(View.OnClickListener {
+            val i: Intent = Intent(this@ChangepasswordActivity, MyProfile::class.java)
+            startActivity(i)
+            finishAffinity()
         })
 
 

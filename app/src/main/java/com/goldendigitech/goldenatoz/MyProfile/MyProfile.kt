@@ -23,6 +23,7 @@ import com.goldendigitech.goldenatoz.employee.Employee
 import com.goldendigitech.goldenatoz.employee.EmployeeViewModel
 import com.goldendigitech.goldenatoz.singleToneClass.SharedPreferencesManager
 import android.util.Base64
+import com.goldendigitech.goldenatoz.MainActivity
 
 class MyProfile : AppCompatActivity(), View.OnClickListener
 {
@@ -80,6 +81,14 @@ class MyProfile : AppCompatActivity(), View.OnClickListener
         myProfileBinding.tvFeedback.setOnClickListener(this)
         myProfileBinding.tvComplaint.setOnClickListener(this)
         myProfileBinding.tvHelpdesk.setOnClickListener(this)
+
+
+        // Set up the back button click listener
+        myProfileBinding.ivBack.setOnClickListener(View.OnClickListener {
+            val i: Intent = Intent(this@MyProfile, MainActivity::class.java)
+            startActivity(i)
+            finishAffinity()
+        })
 
     }
 
