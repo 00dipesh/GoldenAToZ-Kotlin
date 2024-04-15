@@ -1,6 +1,7 @@
 package com.goldendigitech.goldenatoz.TourPlan.TourPlanAdapter
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -44,6 +45,13 @@ RecyclerView.Adapter<MonthlyTourPlanAdapter.MyTourCalendar> () {
         holder.tv_town.text = mtm.Town
         holder.tv_beatname.text = mtm.BeatName
         holder.tv_distributor.text = mtm.DistributorName
+        Log.d("TAG", "response : $mtm.State")
+        Log.d("TAG", "response : $mtm.SsName")
+        Log.d("TAG", "response : $mtm.TaskOfDay")
+        Log.d("TAG", "response : $mtm.Town")
+        Log.d("TAG", "response : $mtm.BeatName")
+        Log.d("TAG", "response : $mtm.mtm.DistributorName")
+
 
     }
 

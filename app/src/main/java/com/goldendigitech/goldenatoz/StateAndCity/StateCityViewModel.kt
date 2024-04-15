@@ -14,6 +14,7 @@ class StateCityViewModel:ViewModel() {
     val statesLiveData: MutableLiveData<List<StateData>> = MutableLiveData()
     val citiesLiveData: MutableLiveData<List<String>> = MutableLiveData()
 
+
     fun fetchState() {
         val modelCall:Call<GetStateModel> = Constant.webService.GetState()
         modelCall.enqueue(object : Callback<GetStateModel> {
@@ -29,22 +30,12 @@ class StateCityViewModel:ViewModel() {
     }
 
     fun fetchCity(stateId: Int) {
-        val cityModelCall: Call<GetCityModel> = Constant.webService.getCitiesByStateId(stateId)
+        val cityModelCall = Constant.webService.getCitiesByStateId(stateId)
         cityModelCall.enqueue(object : Callback<GetCityModel> {
             override fun onResponse(call: Call<GetCityModel>, response: Response<GetCityModel>) {
-                if (response.isSuccessful) {
-                    val body = response.body()
-                    if (body != null && body.data != null) {
-                        citiesLiveData.value = ArrayList(body.data.values)
-                        Log.d("TAG", "AddTourModel response $response.body()")
-                    } else {
-                        // Handle empty response body
-                        // For example, set citiesLiveData value to an empty list
-                        citiesLiveData.value = emptyList()
-                    }
+                if (response.isSuccessful && response.body() != null) {
+                    citiesLiveData.value = ArrayList(response.body()!!.Data.values)
                 } else {
-                    // Handle unsuccessful response
-                    // For example, set citiesLiveData value to null
                     citiesLiveData.value
                 }
             }
@@ -55,13 +46,7 @@ class StateCityViewModel:ViewModel() {
         })
     }
 
-//    fun getStatesLiveData(): MutableLiveData<List<StateData>> {
-//        return statesLiveData
-//    }
-//
-//    fun getCitiesLiveData(): MutableLiveData<List<String>> {
-//        return citiesLiveData
-//    }
+
 
 
 

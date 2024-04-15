@@ -73,7 +73,7 @@ class TourPlanActivity : AppCompatActivity() {
 
         stateCityViewModel = ViewModelProvider(this).get(StateCityViewModel::class.java)
 
-
+        Log.d("TAG", "response citiesm "+stateCityViewModel)
         val intent = intent
         val selectedDate = intent.getStringExtra("selected_date")
         val selectedDay = intent.getStringExtra("selected_day")
@@ -121,9 +121,10 @@ class TourPlanActivity : AppCompatActivity() {
                 val cityAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, cities)
                 cityAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
                 tourPlanBinding.spinnerCity.adapter = cityAdapter
+                Log.d("TAG", "response : "+cityAdapter)
+                Log.d("TAG", "response cities "+cities)
             }
         })
-
 
         GetTaskList()
         getSSList()
@@ -177,13 +178,9 @@ class TourPlanActivity : AppCompatActivity() {
 
     }
 
-
-
-
     private fun handleSubmitClick() {
         handleAddTourPlan()
     }
-
 
     private fun getStateIdByName(stateName: String): Int {
         val states = stateCityViewModel.statesLiveData.value
@@ -222,6 +219,7 @@ class TourPlanActivity : AppCompatActivity() {
             }
         })
     }
+
     fun getSSList() {
 
         val ssModelCall = Constant.webService.SS_MODEL_CALL();
@@ -253,6 +251,7 @@ class TourPlanActivity : AppCompatActivity() {
 
         })
     }
+
     private fun GetTownList() {
         val townModelCall: Call<GetTownResponce> = Constant.webService.TOWN_MODEL_CALL()
         townModelCall.enqueue(object : Callback<GetTownResponce> {
@@ -282,6 +281,7 @@ class TourPlanActivity : AppCompatActivity() {
             }
         })
     }
+
     private fun handleAddTourPlan() {
         val dateVal = tourPlanBinding.edDate.text.toString().trim()
         val dayVal = tourPlanBinding.edDay.text.toString().trim()
