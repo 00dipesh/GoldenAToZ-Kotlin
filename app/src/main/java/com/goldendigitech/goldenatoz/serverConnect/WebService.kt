@@ -18,9 +18,12 @@ import com.goldendigitech.goldenatoz.TourPlan.TourPlanModel.GetTownResponce
 
 import com.goldendigitech.goldenatoz.Feedback.FeedbackModel
 import com.goldendigitech.goldenatoz.Feedback.FeedbackResponse
+import com.goldendigitech.goldenatoz.Holiday.HolidayResponse
 import com.goldendigitech.goldenatoz.SalarySlip.SalarySlipResponse
 import com.goldendigitech.goldenatoz.UpdatePersonalInfo.UpdatePersonalInfoModel
 import com.goldendigitech.goldenatoz.UpdatePersonalInfo.UpdatePersonalInfoResponse
+import com.goldendigitech.goldenatoz.UpdatePersonalInfo.UploadDocumentModel
+import com.goldendigitech.goldenatoz.UpdatePersonalInfo.UploadDocumentResponse
 
 import com.goldendigitech.goldenatoz.attendance.AttendanceModel
 import com.goldendigitech.goldenatoz.attendance.AttendanceResponse
@@ -105,5 +108,13 @@ interface WebService {
 
     @POST("Api/Employee/Update")
     fun updateUserData(@Body requestUpdatePersonalInfo : UpdatePersonalInfoModel): Call<UpdatePersonalInfoResponse>
+
+    @POST("Api/Employee/Document/Add")
+    fun uploadUserDocument(@Body requestDocument : UploadDocumentModel): Call<UploadDocumentResponse>
+
+    @GET("Api/Account/HolidayList/GetAll")
+    fun showHolidayList(): Call<HolidayResponse>
+
+
 
 }

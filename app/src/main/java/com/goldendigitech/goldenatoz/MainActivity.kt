@@ -1,8 +1,10 @@
 package com.goldendigitech.goldenatoz
 
 import android.content.Intent
+import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Base64
 import android.util.Log
 import android.view.View
 import android.widget.ImageView
@@ -19,7 +21,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.get
 import androidx.viewpager.widget.ViewPager
 import com.goldendigitech.goldenatoz.Adapter.TabLayoutAdapter
+import com.goldendigitech.goldenatoz.Holiday.HolidayCalender
 import com.goldendigitech.goldenatoz.MyProfile.MyProfile
+import com.goldendigitech.goldenatoz.employee.DocumentViewModel
 import com.goldendigitech.goldenatoz.employee.Employee
 import com.goldendigitech.goldenatoz.employee.EmployeeViewModel
 import com.goldendigitech.goldenatoz.login.LoginScreen
@@ -30,6 +34,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.tabs.TabLayout
+import com.mikhaellopez.circularimageview.CircularImageView
 import retrofit2.Call
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
@@ -57,7 +62,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     lateinit var logoutButton: ImageView
     lateinit var tabLayout: TabLayout
     lateinit var viewPager: ViewPager
+    lateinit var circularImageView: CircularImageView
     private lateinit var employeeViewModel: EmployeeViewModel
+    private lateinit var documentViewModel: DocumentViewModel
     var employeeId: Int = 0
     lateinit var email: String
     lateinit var contact: String
@@ -71,7 +78,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         //setSupportActionBar()
         employeeViewModel = ViewModelProvider(this).get(EmployeeViewModel::class.java)
         logoutViewModel = ViewModelProvider(this).get(LogoutViewModel::class.java)
-
+        documentViewModel = ViewModelProvider(this).get(DocumentViewModel::class.java)
 
         employeeId = SharedPreferencesManager.getInstance(this).getUserId()
 
@@ -97,6 +104,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         iv_userprofile = findViewById(R.id.iv_userprofile)
         logoutButton = findViewById(R.id.logoutButton)
         bottomNavigationView = findViewById(R.id.bottom_nav)
+        circularImageView =  findViewById(R.id.iv_userprofile)
 
         employeeViewModel.getEmployeeData(employeeId)
         employeeViewModel.employeeLiveData.observe(this, { employee ->
@@ -110,6 +118,25 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 ).show()
             }
         })
+
+        documentViewModel.documentLiveData.observe(this,{documents ->
+            documents?.let {
+                // Assuming you want to display the first photo in the list
+                if (documents.isNotEmpty()) {
+                    val firstPhoto = documents.firstOrNull { it.fileName == "Photo" } // Assuming "Photo" is the fileName of the photo
+                    firstPhoto?.let {
+                        // Decode the Base64 string and set it to ImageView
+                        val decodedBytes = Base64.decode(it.fileContent, Base64.DEFAULT)
+                        val bitmap = BitmapFactory.decodeByteArray(decodedBytes, 0, decodedBytes.size)
+                        circularImageView.setImageBitmap(bitmap)
+                    }
+                } else {
+                    // Handle case where there are no documents
+                }
+            }
+        })
+
+        documentViewModel.getDocumentsByEmployeeId(employeeId)
 
 
         rel_nav_myprofile!!.setOnClickListener(this)
@@ -168,10 +195,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         logoutViewModel.logoutResponce.observe(this, Observer { response ->
             if (response != null) {
                 if (response.success) {
-//                    SharedPreferencesManager.getInstance(this).clearUserData()
-//                    val intent = Intent(this, LoginScreen::class.java)
-//                    startActivity(intent)
-//                    finish()
                     showToast("Logout Successful")
                     Log.d("TAG", "This is a debug response" + response.message)
 
@@ -222,8 +245,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
             R.id.rel_nav_holiday -> {
                 // Handle click for Holiday
-                //val intent = Intent(this@MainActivity, HolidayCalenderActivity::class.java)
-                //startActivity(intent)
+                val intent = Intent(this@MainActivity, HolidayCalender::class.java)
+                startActivity(intent)
             }
 
             R.id.rel_nav_leave -> {

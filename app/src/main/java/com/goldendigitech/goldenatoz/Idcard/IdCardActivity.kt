@@ -1,11 +1,13 @@
 package com.goldendigitech.goldenatoz.Idcard
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import com.goldendigitech.goldenatoz.MyProfile.MyProfile
 import com.goldendigitech.goldenatoz.R
 import com.goldendigitech.goldenatoz.Util.FormatterUtil
 import com.goldendigitech.goldenatoz.databinding.ActivityComplaintBinding
@@ -40,6 +42,14 @@ class IdCardActivity : AppCompatActivity() {
             } ?: run {
                 Toast.makeText(this@IdCardActivity, "Failed to get employee details", Toast.LENGTH_SHORT).show()
             }
+        })
+
+
+        // Set up the back button click listener
+        idCardBinding.ivBack.setOnClickListener(View.OnClickListener {
+            val i: Intent = Intent(this@IdCardActivity, MyProfile::class.java)
+            startActivity(i)
+            finishAffinity()
         })
 
     }

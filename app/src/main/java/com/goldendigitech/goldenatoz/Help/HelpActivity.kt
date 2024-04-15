@@ -13,6 +13,7 @@ import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.goldendigitech.goldenatoz.MainActivity
+import com.goldendigitech.goldenatoz.MyProfile.MyProfile
 import com.goldendigitech.goldenatoz.databinding.ActivityHelpBinding
 
 class HelpActivity : AppCompatActivity() {
@@ -44,6 +45,15 @@ class HelpActivity : AppCompatActivity() {
         helpBinding.RelWhatsapp.setOnClickListener { openWhatsApp(phoneNumber) }
 
         helpBinding.RelEmail.setOnClickListener { composeEmail() }
+
+
+        // Set up the back button click listener
+        helpBinding.ivBack.setOnClickListener(View.OnClickListener {
+            val i: Intent = Intent(this@HelpActivity, MyProfile::class.java)
+            startActivity(i)
+            finishAffinity()
+        })
+
 
     }
 

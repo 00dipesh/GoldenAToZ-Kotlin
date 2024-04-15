@@ -1,7 +1,9 @@
 package com.goldendigitech.goldenatoz.Performance
 
 import android.content.Intent
+import android.graphics.BitmapFactory
 import android.os.Bundle
+import android.util.Base64
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -20,6 +22,7 @@ import com.goldendigitech.goldenatoz.Home.HomeSubMenuAdapter
 import com.goldendigitech.goldenatoz.Home.HomeSubMenuModel
 import com.goldendigitech.goldenatoz.R
 import com.goldendigitech.goldenatoz.TourPlan.SelectTourPlanActivity
+import com.goldendigitech.goldenatoz.employee.DocumentViewModel
 import com.goldendigitech.goldenatoz.employee.Employee
 import com.goldendigitech.goldenatoz.employee.EmployeeViewModel
 import com.goldendigitech.goldenatoz.singleToneClass.SharedPreferencesManager
@@ -45,6 +48,7 @@ class PerformanceFragment : Fragment(), HomeAdapter.OnItemClickListener {
     lateinit var tv_uname: TextView
 
     lateinit var employeeViewModel:EmployeeViewModel
+    private lateinit var documentViewModel: DocumentViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -55,6 +59,7 @@ class PerformanceFragment : Fragment(), HomeAdapter.OnItemClickListener {
             .inflate(R.layout.fragment_performance, container, false)
 
         employeeViewModel = ViewModelProvider(this).get(EmployeeViewModel::class.java)
+        documentViewModel = ViewModelProvider(this).get(DocumentViewModel::class.java)
 
         subMenuList()
         getHomeMenuList()
@@ -79,9 +84,30 @@ class PerformanceFragment : Fragment(), HomeAdapter.OnItemClickListener {
                 Toast.makeText(context, "Failed to get employee details", Toast.LENGTH_SHORT).show()
             }
         })
+        // Fetch employee data
         employeeViewModel.getEmployeeData(employeeId)
         Log.d("Selected  ID", employeeId.toString())
-// Fetch employee data
+
+
+
+        documentViewModel.documentLiveData.observe(viewLifecycleOwner,{documents ->
+            documents?.let {
+                // Assuming you want to display the first photo in the list
+                if (documents.isNotEmpty()) {
+                    val firstPhoto = documents.firstOrNull { it.fileName == "Photo" } // Assuming "Photo" is the fileName of the photo
+                    firstPhoto?.let {
+                        // Decode the Base64 string and set it to ImageView
+                        val decodedBytes = Base64.decode(it.fileContent, Base64.DEFAULT)
+                        val bitmap = BitmapFactory.decodeByteArray(decodedBytes, 0, decodedBytes.size)
+                        iv_userprofile.setImageBitmap(bitmap)
+                    }
+                } else {
+                    // Handle case where there are no documents
+                }
+            }
+        })
+
+        documentViewModel.getDocumentsByEmployeeId(employeeId)
 
         rv_homemenu.setHasFixedSize(true)
         val layoutManager = GridLayoutManager(requireContext(), 3)
