@@ -3,6 +3,7 @@ package com.goldendigitech.goldenatoz.TourPlan
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -37,6 +38,7 @@ class SelectTourPlanActivity : AppCompatActivity() {
         selectTourPlanBinding = ActivitySelectTourPlanBinding.inflate(layoutInflater)
         val view: View = selectTourPlanBinding.root
         setContentView(view)
+
         handleAllTourList();
 
         selectTourPlanBinding.ivBack.setOnClickListener {
@@ -80,8 +82,6 @@ class SelectTourPlanActivity : AppCompatActivity() {
                     intent.putExtra("selected_day", selectedDay)
                     startActivity(intent)
                 }
-
-
             }
         })
 
@@ -98,7 +98,8 @@ class SelectTourPlanActivity : AppCompatActivity() {
             ) {
                 if (response.isSuccessful) {
                     val allTourResponce = response.body()
-                    val monthlyTourModelList = allTourResponce?.data
+                    Log.d("TAG", "response allTourResponce : $response.body")
+                    val monthlyTourModelList = allTourResponce?.Data
                     if (monthlyTourModelList != null) {
                         selectTourPlanBinding.rvTour.layoutManager =
                             LinearLayoutManager(this@SelectTourPlanActivity)
@@ -141,7 +142,6 @@ class SelectTourPlanActivity : AppCompatActivity() {
         cal.time = date
         return cal
     }
-
     private fun hasTourPlanForDate(selectedDate: String): Boolean {
         eventDates?.let {
             val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
@@ -154,7 +154,6 @@ class SelectTourPlanActivity : AppCompatActivity() {
         }
         return false
     }
-
     private fun showToast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }

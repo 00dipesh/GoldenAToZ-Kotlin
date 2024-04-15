@@ -23,21 +23,21 @@
         android:theme="@style/Theme.GoldenATOZ"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
-
+        <activity
+            android:name=".StoreVisit.StoreVisitActivity"
+            android:exported="false" />
         <activity
             android:name=".TourPlan.TourPlanActivity"
             android:exported="false" />
         <activity
             android:name=".TourPlan.SelectTourPlanActivity"
             android:exported="false" />
-
         <activity
             android:name=".UpdatePersonalInfo.UpdatePersonalInfo"
             android:exported="false" />
         <activity
             android:name=".SalarySlip.SalarySlipView"
             android:exported="false" />
-
         <activity
             android:name=".PersonalInfo.PersonalInfo"
             android:exported="false" />
