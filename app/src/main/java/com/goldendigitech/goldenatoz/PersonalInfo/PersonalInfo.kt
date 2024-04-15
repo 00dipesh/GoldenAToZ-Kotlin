@@ -7,6 +7,8 @@ import android.util.Log
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.goldendigitech.goldenatoz.MainActivity
+import com.goldendigitech.goldenatoz.MyProfile.MyProfile
 import com.goldendigitech.goldenatoz.UpdatePersonalInfo.UpdatePersonalInfo
 import com.goldendigitech.goldenatoz.databinding.ActivityPersonalInfoBinding
 import com.goldendigitech.goldenatoz.employee.DocumentViewModel
@@ -65,6 +67,12 @@ class PersonalInfo : AppCompatActivity() {
             finishAffinity()
         }
 
+        // Set up the back button click listener
+        personalInfoBinding.ivBack.setOnClickListener(View.OnClickListener {
+            val i: Intent = Intent(this@PersonalInfo, MyProfile::class.java)
+            startActivity(i)
+            finishAffinity()
+        })
 
     }
 

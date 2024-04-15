@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.goldendigitech.goldenatoz.MainActivity
+import com.goldendigitech.goldenatoz.MyProfile.MyProfile
 import com.goldendigitech.goldenatoz.databinding.ActivityFeedbackFormBinding
 import com.goldendigitech.goldenatoz.singleToneClass.SharedPreferencesManager
 
@@ -44,7 +45,15 @@ class FeedbackForm : AppCompatActivity() {
                 )
                 feedbackViewModel.addFeedback(feedbackModel)
             }
-    }
+
+            // Set up the back button click listener
+            feedbackFormBinding.ivBack.setOnClickListener(View.OnClickListener {
+                val i: Intent = Intent(this@FeedbackForm, MyProfile::class.java)
+                startActivity(i)
+                finishAffinity()
+            })
+
+        }
 
         feedbackViewModel.feedbackResponse.observe(this, Observer {feedback ->
             if (feedback != null) {

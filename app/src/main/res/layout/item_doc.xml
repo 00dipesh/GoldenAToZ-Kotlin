@@ -22,11 +22,11 @@
         android:visibility="gone">
 
 
-<!--        <com.github.barteksc.pdfviewer.PDFView-->
-<!--            android:id="@+id/pdfview_doc"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:visibility="gone"/>-->
+        <com.github.barteksc.pdfviewer.PDFView
+            android:id="@+id/pdfview_doc"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"/>
 
 
     </FrameLayout>

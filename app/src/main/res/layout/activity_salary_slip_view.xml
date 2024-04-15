@@ -40,6 +40,9 @@
         </androidx.appcompat.widget.Toolbar>
 
 
-
+    <com.github.barteksc.pdfviewer.PDFView
+        android:id="@+id/view_salaryslip"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
     </LinearLayout>
