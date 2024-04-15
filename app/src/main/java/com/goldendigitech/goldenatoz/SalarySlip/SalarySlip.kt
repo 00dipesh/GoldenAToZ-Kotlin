@@ -4,6 +4,9 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.goldendigitech.goldenatoz.singleToneClass.SharedPreferencesManager
 import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -11,7 +14,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.goldendigitech.goldenatoz.MyProfile.MyProfile
 import com.goldendigitech.goldenatoz.databinding.ActivitySalarySlipBinding
-import com.goldendigitech.goldenatoz.singleToneClass.SharedPreferencesManager
+
+
 
 
 class SalarySlip : AppCompatActivity() {
@@ -19,6 +23,9 @@ class SalarySlip : AppCompatActivity() {
     private lateinit var salarySlipBinding: ActivitySalarySlipBinding
     lateinit var salarySlipViewModel: SalarySlipViewModel
     private lateinit var adapter: SalarySlipAdapter
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -26,11 +33,6 @@ class SalarySlip : AppCompatActivity() {
         val view: View = salarySlipBinding.root
         setContentView(view)
 
-
-        salarySlipBinding!!.ivBack.setOnClickListener {
-            val ivback = Intent(this@SalarySlip,MyProfile ::class.java)
-            startActivity(ivback)
-        }
 
         salarySlipViewModel = ViewModelProvider(this).get(SalarySlipViewModel::class.java)
 
@@ -67,6 +69,7 @@ class SalarySlip : AppCompatActivity() {
             startActivity(i)
             finishAffinity()
         })
+
 
     }
 }
