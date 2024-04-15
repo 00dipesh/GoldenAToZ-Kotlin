@@ -507,6 +507,9 @@
                     android:textStyle="bold" />
 
                 <!-- Spinner to display the dropdown -->
+
+
+                <!--visiblity-->
                 <Spinner
                     android:id="@+id/spinner"
                     android:layout_width="match_parent"
@@ -515,8 +518,6 @@
                     android:background="@drawable/spinner_background"
                     android:textAlignment="center" />
 
-
-                <!--visiblity-->
                 <RelativeLayout
                     android:id="@+id/Rel_leave"
                     android:layout_width="wrap_content"
