@@ -9,8 +9,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.goldendigitech.goldenatoz.singleToneClass.SharedPreferencesManager
 import android.view.View
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.goldendigitech.goldenatoz.MyProfile.MyProfile
 import com.goldendigitech.goldenatoz.databinding.ActivitySalarySlipBinding

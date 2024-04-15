@@ -22,6 +22,7 @@ import androidx.lifecycle.get
 import androidx.viewpager.widget.ViewPager
 import com.goldendigitech.goldenatoz.Adapter.TabLayoutAdapter
 import com.goldendigitech.goldenatoz.Holiday.HolidayCalender
+import com.goldendigitech.goldenatoz.Leave.LeaveStatus
 import com.goldendigitech.goldenatoz.MyProfile.MyProfile
 import com.goldendigitech.goldenatoz.employee.DocumentViewModel
 import com.goldendigitech.goldenatoz.employee.Employee
@@ -251,8 +252,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
             R.id.rel_nav_leave -> {
                 // Handle click for Leave
-                //val intent = Intent(this@MainActivity, LeaveStatusActivity::class.java)
-                //startActivity(intent)
+                val intent = Intent(this@MainActivity, LeaveStatus::class.java)
+                startActivity(intent)
             }
 
             R.id.rel_nav_syncdata -> {
