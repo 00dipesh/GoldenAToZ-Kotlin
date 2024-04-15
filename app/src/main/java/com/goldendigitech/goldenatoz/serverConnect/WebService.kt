@@ -19,6 +19,9 @@ import com.goldendigitech.goldenatoz.TourPlan.TourPlanModel.GetTownResponce
 import com.goldendigitech.goldenatoz.Feedback.FeedbackModel
 import com.goldendigitech.goldenatoz.Feedback.FeedbackResponse
 import com.goldendigitech.goldenatoz.Holiday.HolidayResponse
+import com.goldendigitech.goldenatoz.Leave.Response.AddLeaveModel
+import com.goldendigitech.goldenatoz.Leave.Response.AddLeaveResponse
+import com.goldendigitech.goldenatoz.Leave.Response.LeaveStatusResponse
 import com.goldendigitech.goldenatoz.SalarySlip.SalarySlipResponse
 import com.goldendigitech.goldenatoz.UpdatePersonalInfo.UpdatePersonalInfoModel
 import com.goldendigitech.goldenatoz.UpdatePersonalInfo.UpdatePersonalInfoResponse
@@ -114,6 +117,12 @@ interface WebService {
 
     @GET("Api/Account/HolidayList/GetAll")
     fun showHolidayList(): Call<HolidayResponse>
+
+    @POST("Api/Employee/Leave/Add")
+    fun addLeave(@Body addLeaveModel: AddLeaveModel): Call<AddLeaveResponse>
+
+    @GET("Api/Employee/Leave/GetLeaveByEmpIdAndStatus")
+    fun showLeaveStatus(@Query("EmpId") empId: Int, @Query("Status") status: String): Call<LeaveStatusResponse>
 
 
 

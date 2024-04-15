@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="utf-8"?>
+ <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@drawable/app_background"
+        tools:context=".Leave.LeaveApplication">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@drawable/toolbar_background">
+
+            <ImageView
+                android:id="@+id/iv_back"
+                android:layout_width="32dp"
+                android:layout_height="33dp"
+                android:layout_marginEnd="8dp"
+                android:src="@drawable/ic_arrow_back" />
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="10dp"
+                android:src="@drawable/atoz_logo" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/urbanist_black"
+                android:paddingStart="20dp"
+                android:text="Leave Application"
+                android:textColor="@color/login_textcolor"
+                android:textSize="25dp"
+                android:textStyle="bold" />
+
+
+        </androidx.appcompat.widget.Toolbar>
+
+
+
+        <androidx.cardview.widget.CardView
+            app:cardCornerRadius="3dp"
+            app:cardElevation="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="2dp">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_marginTop="12dp"
+                    android:layout_margin="10dp">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_margin="5dp">
+
+                        <TextView
+                            android:text="Name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="13dp"
+                            android:layout_marginStart="5dp"/>
+
+
+                        <EditText
+                            android:id="@+id/ed_name"
+                            android:inputType="text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/work_info_drawable"
+                            android:padding="11dp"
+                            android:textSize="13dp"
+                            android:imeOptions="actionNext"
+                            android:editable="false"
+                            android:elevation="8dp"
+                            android:layout_margin="5dp"
+                            />
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_margin="5dp">
+
+                        <TextView
+                            android:text="Employee ID"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="13dp"
+                            android:layout_marginStart="5dp" />
+
+                        <EditText
+                            android:id="@+id/ed_empid"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/work_info_drawable"
+                            android:padding="11dp"
+                            android:textSize="13dp"
+                            android:editable="false"
+                            android:gravity="start"
+                            android:elevation="8dp"
+                            android:layout_margin="5dp"/>
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_margin="5dp">
+
+                        <TextView
+                            android:text="Leave Date"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="13dp"
+                            android:layout_marginStart="5dp" />
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:weightSum="2">
+
+                            <TextView
+                                android:id="@+id/tv_to"
+                                android:layout_width="50dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginBottom="5dp"
+                                android:layout_weight="0.2"
+                                android:editable="false"
+                                android:elevation="8dp"
+                                android:gravity="start"
+                                android:padding="5dp"
+                                android:text="TO"
+                                android:textColor="@color/black"
+                                android:textSize="16dp"
+                                android:textStyle="bold" />
+
+                            <EditText
+                                android:id="@+id/ed_todate"
+                                android:layout_width="120dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginBottom="5dp"
+                                android:layout_toEndOf="@+id/tv_to"
+                                android:layout_weight="0.8"
+                                android:background="@drawable/work_info_drawable"
+                                android:editable="false"
+                                android:elevation="8dp"
+                                android:gravity="start"
+                                android:padding="11dp"
+                                android:textSize="13dp" />
+
+                            <TextView
+                                android:id="@+id/tv_from"
+                                android:layout_width="60dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginBottom="5dp"
+                                android:layout_toEndOf="@+id/ed_todate"
+                                android:layout_weight="0.2"
+                                android:editable="false"
+                                android:elevation="8dp"
+                                android:gravity="start"
+                                android:padding="5dp"
+                                android:text="From"
+                                android:textColor="@color/black"
+                                android:textSize="16dp"
+                                android:textStyle="bold" />
+
+                            <EditText
+                                android:id="@+id/ed_fromdate"
+                                android:layout_width="120dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginBottom="5dp"
+                                android:layout_toEndOf="@+id/tv_from"
+                                android:layout_weight="0.8"
+                                android:background="@drawable/work_info_drawable"
+                                android:editable="false"
+                                android:elevation="8dp"
+                                android:gravity="start"
+                                android:padding="11dp"
+                                android:textSize="13dp" />
+
+                        </RelativeLayout>
+
+
+
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_margin="5dp">
+
+                        <TextView
+                            android:text="Leave Type"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="13dp"
+                            android:layout_marginStart="5dp"  />
+
+
+                        <Spinner
+                            android:id="@+id/sp_leavetype"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="8dp"
+                            android:entries="@array/leavetype"
+                            android:elevation="8dp"
+                            android:layout_margin="1dp"
+                            />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_margin="5dp">
+
+                        <TextView
+                            android:text="Leave Period"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="13dp"
+                            android:layout_marginStart="5dp"  />
+
+
+                        <Spinner
+                            android:id="@+id/sp_period"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="8dp"
+                            android:entries="@array/leaveperiod"
+                            android:elevation="8dp"
+                            android:layout_margin="1dp"
+                            />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_margin="5dp">
+
+                        <TextView
+                            android:text="Reason"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="13dp"
+                            android:layout_marginStart="5dp" />
+
+                        <EditText
+                            android:id="@+id/ed_reasons"
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            android:background="@drawable/work_info_drawable"
+                            android:padding="11dp"
+                            android:textSize="13dp"
+                            android:gravity="start"
+                            android:elevation="8dp"
+                            android:layout_margin="5dp"/>
+
+                    </LinearLayout>
+
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="10dp">
+
+                        <Button
+                            android:id="@+id/btn_submit"
+                            android:text="Submit"
+                            android:layout_width="250dp"
+                            android:layout_height="wrap_content"
+                            android:padding="12dp"
+                            android:layout_marginTop="1.5dp"
+                            android:layout_gravity="center"
+                            android:textColor="@color/white"
+                            android:textSize="20dp"
+                            android:background="@drawable/loginbutton_drawable"
+                            android:layout_marginBottom="30dp"/>
+
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+
+            </ScrollView>
+
+        </androidx.cardview.widget.CardView>
+
+
+    </LinearLayout>
