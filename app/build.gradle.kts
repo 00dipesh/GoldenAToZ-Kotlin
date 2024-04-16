@@ -62,4 +62,5 @@ dependencies {
     implementation("com.prolificinteractive:material-calendarview:1.4.3")
     implementation("com.github.barteksc:android-pdf-viewer:2.8.2")
 
+    implementation ("com.github.bumptech.glide:glide:4.12.0")
 }
