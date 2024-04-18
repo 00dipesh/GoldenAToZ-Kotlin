@@ -43,6 +43,7 @@ import android.location.Location
 import android.os.Handler
 import android.os.Looper
 import android.location.Address
+import com.goldendigitech.goldenatoz.StateAndCity.StateCityViewModel
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.tasks.OnSuccessListener
@@ -57,6 +58,7 @@ class AttendanceActivity : AppCompatActivity() {
     private lateinit var attendanceviewModel: AttendanceViewModel
     private lateinit var employeeViewModel: EmployeeViewModel
     private lateinit var taskListViewModel: TaskListViewModel
+    private lateinit var stateCityViewModel: StateCityViewModel
 
     private var selectedWorkType: String = ""
     private var selectedAreaWork: String = ""
@@ -66,6 +68,7 @@ class AttendanceActivity : AppCompatActivity() {
     private var selectedWorking: String = ""
     private var selectedId: Int? = null
     private var selectedTaskName: String = ""
+    lateinit var stateVal: String
 
     private var camera: android.hardware.Camera? = null
     private var cameraOpened = false
@@ -94,6 +97,8 @@ class AttendanceActivity : AppCompatActivity() {
         attendanceviewModel = ViewModelProvider(this).get(AttendanceViewModel::class.java)
         employeeViewModel = ViewModelProvider(this).get(EmployeeViewModel::class.java)
         taskListViewModel = ViewModelProvider(this).get(TaskListViewModel::class.java)
+        stateCityViewModel = ViewModelProvider(this).get(StateCityViewModel::class.java)
+
 
         // Request camera permission if not granted
         if (checkCameraPermission()) {
@@ -446,6 +451,41 @@ class AttendanceActivity : AppCompatActivity() {
             }
         })
 
+        stateCityViewModel.fetchState()
+
+        stateCityViewModel.statesLiveData.observe(this, Observer { data ->
+            if (data != null) {
+                val stateNames = ArrayList<String>()
+                stateNames.add("Select State")
+                for (state in data) {
+                    state.StateName?.let { stateNames.add(it) }
+                }
+                val attendanceadapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, stateNames)
+                attendanceadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                attendanceBinding.spinnerState.adapter = attendanceadapter
+            }
+        })
+
+        attendanceBinding.spinnerState.onItemSelectedListener =
+            object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(
+                    parent: AdapterView<*>?,
+                    view: View?,
+                    position: Int,
+                    id: Long
+                ) {
+                    if (position > 0) {
+                        stateVal = parent?.getItemAtPosition(position).toString()
+                        val stateId = getStateIdByName(stateVal)
+                        stateCityViewModel.fetchCity(stateId)
+                    }
+                }
+
+                override fun onNothingSelected(parent: AdapterView<*>?) {
+                    // Handle nothing selected
+                }
+            }
+
     }
 
     private fun showToast(message: String) {
@@ -762,5 +802,17 @@ class AttendanceActivity : AppCompatActivity() {
 
     private fun askPermission() {
         ActivityCompat.requestPermissions(this, PERMISSIONS, LOCATION_PERMISSION_REQUEST_CODE)
+    }
+
+    private fun getStateIdByName(stateName: String): Int {
+        val states = stateCityViewModel.statesLiveData.value
+        states?.let {
+            for (state in it) {
+                if (state.StateName == stateName) {
+                    return state.Id!!
+                }
+            }
+        }
+        return -1
     }
 }

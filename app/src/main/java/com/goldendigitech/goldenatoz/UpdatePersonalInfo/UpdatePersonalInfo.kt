@@ -49,9 +49,9 @@ class UpdatePersonalInfo : AppCompatActivity(), View.OnClickListener {
     private val genderList = arrayOf("Select Gender", "Male", "Female", "Transgender")
     private lateinit var maritalStatusList: Array<String>
     private lateinit var bloodGroupList: Array<String>
-    private  val REQUEST_IMAGE_CAPTURE = 1
-    private  val REQUEST_PICK_IMAGE = 2
-    private  val REQUEST_PICK_PDF = 3
+    private val REQUEST_IMAGE_CAPTURE = 1
+    private val REQUEST_PICK_IMAGE = 2
+    private val REQUEST_PICK_PDF = 3
     private var selectedTextView: TextView? = null
     private var employeeId: Int = 0
     private var filename: String = ""
@@ -72,9 +72,10 @@ class UpdatePersonalInfo : AppCompatActivity(), View.OnClickListener {
         setContentView(view)
 
         employeeViewModel = ViewModelProvider(this).get(EmployeeViewModel::class.java)
-        updatePersonalInfoViewModel = ViewModelProvider(this).get(UpdatePersonalInfoViewModel::class.java)
+        updatePersonalInfoViewModel =
+            ViewModelProvider(this).get(UpdatePersonalInfoViewModel::class.java)
 
-         employeeId = SharedPreferencesManager.getInstance(this).getUserId()
+        employeeId = SharedPreferencesManager.getInstance(this).getUserId()
         Log.d("employeeId ID", employeeId.toString())
         maritalStatusList = resources.getStringArray(R.array.maritualstatus)
         bloodGroupList = resources.getStringArray(R.array.bloodgroup)
@@ -207,6 +208,8 @@ class UpdatePersonalInfo : AppCompatActivity(), View.OnClickListener {
                 updatePersonalInfoBinding.edAddress.isEnabled = true // Enable editing
             }
         }
+
+
 
         updatePersonalInfoBinding.tvSave.setOnClickListener {
             val firstNameVal = updatePersonalInfoBinding.edFname.text.toString().trim()
@@ -348,6 +351,11 @@ class UpdatePersonalInfo : AppCompatActivity(), View.OnClickListener {
                 mStatus = employee.maritalStatus
                 gender = employee.gender
                 bldgrp = employee.bloodGroup
+
+                if (edAddress.setText(employee.address) == edPaddress.setText(employee.permanentAddress)) {
+                    updatePersonalInfoBinding.chSameasaddress.isChecked = true
+                }
+
 
                 mStatus?.let { status ->
                     val position = maritalStatusList.indexOf(status)
@@ -556,31 +564,37 @@ class UpdatePersonalInfo : AppCompatActivity(), View.OnClickListener {
 //                    fileViewModel.showFile(employeeId, "Photo", updatePersonalInfoBinding.tvPhoto)
                 }
             }
+
             R.id.tv_sign -> {
                 filename = "Sign"
                 handleTextView(updatePersonalInfoBinding.tvSign)
                 isTvSignClicked = true
             }
+
             R.id.tv_uploadresume -> {
                 filename = "Resume"
                 handleTextView(updatePersonalInfoBinding.tvUploadresume)
                 isTvUploadResumeClicked = true
             }
+
             R.id.tv_adharcard -> {
                 filename = "Adharcard"
                 handleTextView(updatePersonalInfoBinding.tvAdharcard)
                 isTvAdharCardClicked = true
             }
+
             R.id.tv_pancard -> {
                 filename = "Pancard"
                 handleTextView(updatePersonalInfoBinding.tvPancard)
                 isTvPanCardClicked = true
             }
+
             R.id.tv_certificate -> {
                 filename = "Certificate"
                 handleTextView(updatePersonalInfoBinding.tvCertificate)
                 isTvCertificateClicked = true
             }
+
             R.id.iv_close -> dialog.dismiss()
         }
         showImagePickerDialog(filename)
@@ -600,7 +614,10 @@ class UpdatePersonalInfo : AppCompatActivity(), View.OnClickListener {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK) {
             when (requestCode) {
-                REQUEST_IMAGE_CAPTURE, REQUEST_PICK_IMAGE, REQUEST_PICK_PDF -> handleDocumentResult(requestCode, data)
+                REQUEST_IMAGE_CAPTURE, REQUEST_PICK_IMAGE, REQUEST_PICK_PDF -> handleDocumentResult(
+                    requestCode,
+                    data
+                )
             }
         }
     }
@@ -614,6 +631,7 @@ class UpdatePersonalInfo : AppCompatActivity(), View.OnClickListener {
                     handleImage(it, filetype)
                 }
             }
+
             REQUEST_PICK_IMAGE -> {
                 val imageUri = data?.data
                 imageUri?.let {
@@ -622,6 +640,7 @@ class UpdatePersonalInfo : AppCompatActivity(), View.OnClickListener {
                     handleImageUri(it, filetype)
                 }
             }
+
             REQUEST_PICK_PDF -> {
                 val pdfUri = data?.data
                 pdfUri?.let {
@@ -648,16 +667,22 @@ class UpdatePersonalInfo : AppCompatActivity(), View.OnClickListener {
 
     private fun handleImage(imageBitmap: Bitmap?, fileType: String) {
         imageBitmap?.let {
-            updatePersonalInfoViewModel.userUploadDocument(this,it, fileType, filename, employeeId)
+            updatePersonalInfoViewModel.userUploadDocument(this, it, fileType, filename, employeeId)
         }
     }
 
     private fun handleImageUri(imageUri: Uri, fileType: String) {
-        updatePersonalInfoViewModel.userUploadDocument(this,imageUri, fileType, filename, employeeId)
+        updatePersonalInfoViewModel.userUploadDocument(
+            this,
+            imageUri,
+            fileType,
+            filename,
+            employeeId
+        )
     }
 
     private fun handlePdf(pdfUri: Uri, fileType: String) {
-        updatePersonalInfoViewModel.userUploadDocument(this,pdfUri, fileType, filename, employeeId)
+        updatePersonalInfoViewModel.userUploadDocument(this, pdfUri, fileType, filename, employeeId)
     }
 
     private fun handleTextView(clickedTextView: TextView) {
@@ -667,6 +692,7 @@ class UpdatePersonalInfo : AppCompatActivity(), View.OnClickListener {
         clickedTextView.setBackgroundColor(ContextCompat.getColor(this, R.color.blue))
         selectedTextView = clickedTextView
     }
+
     private fun showToast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
@@ -677,93 +703,114 @@ class UpdatePersonalInfo : AppCompatActivity(), View.OnClickListener {
         // Observe LiveData to update UI
         when (fileType) {
             "Photo" -> {
-                updatePersonalInfoViewModel.photoExistsLiveData.observe(this, Observer { photoExists ->
-                    // Update UI based on whether photo exists or not
-                    if (photoExists) {
-                        // Photo exists
-                        // Update UI accordingly
-                        updateTextView(photoExists, updatePersonalInfoBinding.tvPhoto)
-                        showToast("$fileType exists")
-                    } else {
-                        // Photo does not exist
-                        // Update UI accordingly
-                        showToast("$fileType does not exist")
-                    }
-                })
+                updatePersonalInfoViewModel.photoExistsLiveData.observe(
+                    this,
+                    Observer { photoExists ->
+                        // Update UI based on whether photo exists or not
+                        if (photoExists) {
+                            // Photo exists
+                            // Update UI accordingly
+                            updateTextView(photoExists, updatePersonalInfoBinding.tvPhoto)
+                            showToast("$fileType exists")
+                        } else {
+                            // Photo does not exist
+                            // Update UI accordingly
+                            showToast("$fileType does not exist")
+                        }
+                    })
             }
+
             "Sign" -> {
-                updatePersonalInfoViewModel.signExistsLiveData.observe(this, Observer { signExists ->
-                    // Update UI based on whether sign exists or not
-                    if (signExists) {
-                        // Sign exists
-                        // Update UI accordingly
-                        updateTextView(signExists, updatePersonalInfoBinding.tvSign)
-                        showToast("$fileType exists")
-                    } else {
-                        // Sign does not exist
-                        // Update UI accordingly
-                        showToast("$fileType does not exist")
-                    }
-                })
+                updatePersonalInfoViewModel.signExistsLiveData.observe(
+                    this,
+                    Observer { signExists ->
+                        // Update UI based on whether sign exists or not
+                        if (signExists) {
+                            // Sign exists
+                            // Update UI accordingly
+                            updateTextView(signExists, updatePersonalInfoBinding.tvSign)
+                            showToast("$fileType exists")
+                        } else {
+                            // Sign does not exist
+                            // Update UI accordingly
+                            showToast("$fileType does not exist")
+                        }
+                    })
             }
+
             "Resume" -> {
-                updatePersonalInfoViewModel.resumeExistsLiveData.observe(this, Observer { resumeExists ->
-                    // Update UI based on whether resume exists or not
-                    if (resumeExists) {
-                        // Resume exists
-                        updateTextView(resumeExists, updatePersonalInfoBinding.tvUploadresume)
-                        showToast("$fileType exists")
-                    } else {
-                        // Resume does not exist
-                        // Update UI accordingly
-                        showToast("$fileType does not exist")
-                    }
-                })
+                updatePersonalInfoViewModel.resumeExistsLiveData.observe(
+                    this,
+                    Observer { resumeExists ->
+                        // Update UI based on whether resume exists or not
+                        if (resumeExists) {
+                            // Resume exists
+                            updateTextView(resumeExists, updatePersonalInfoBinding.tvUploadresume)
+                            showToast("$fileType exists")
+                        } else {
+                            // Resume does not exist
+                            // Update UI accordingly
+                            showToast("$fileType does not exist")
+                        }
+                    })
             }
+
             "Adharcard" -> {
-                updatePersonalInfoViewModel.adharcardExistsLiveData.observe(this, Observer { adharcardExists ->
-                    // Update UI based on whether adharcard exists or not
-                    if (adharcardExists) {
-                        // Adharcard exists
-                        // Update UI accordingly
-                        updateTextView(adharcardExists, updatePersonalInfoBinding.tvAdharcard)
-                        showToast("$fileType exists")
-                    } else {
-                        // Adharcard does not exist
-                        // Update UI accordingly
-                        showToast("$fileType does not exist")
-                    }
-                })
+                updatePersonalInfoViewModel.adharcardExistsLiveData.observe(
+                    this,
+                    Observer { adharcardExists ->
+                        // Update UI based on whether adharcard exists or not
+                        if (adharcardExists) {
+                            // Adharcard exists
+                            // Update UI accordingly
+                            updateTextView(adharcardExists, updatePersonalInfoBinding.tvAdharcard)
+                            showToast("$fileType exists")
+                        } else {
+                            // Adharcard does not exist
+                            // Update UI accordingly
+                            showToast("$fileType does not exist")
+                        }
+                    })
             }
+
             "Pancard" -> {
-                updatePersonalInfoViewModel.pancardExistsLiveData.observe(this, Observer { pancardExists ->
-                    // Update UI based on whether pancard exists or not
-                    if (pancardExists) {
-                        // Pancard exists
-                        // Update UI accordingly
-                        updateTextView(pancardExists, updatePersonalInfoBinding.tvPancard)
-                        showToast("$fileType exists")
-                    } else {
-                        // Pancard does not exist
-                        // Update UI accordingly
-                        showToast("$fileType does not exist")
-                    }
-                })
+                updatePersonalInfoViewModel.pancardExistsLiveData.observe(
+                    this,
+                    Observer { pancardExists ->
+                        // Update UI based on whether pancard exists or not
+                        if (pancardExists) {
+                            // Pancard exists
+                            // Update UI accordingly
+                            updateTextView(pancardExists, updatePersonalInfoBinding.tvPancard)
+                            showToast("$fileType exists")
+                        } else {
+                            // Pancard does not exist
+                            // Update UI accordingly
+                            showToast("$fileType does not exist")
+                        }
+                    })
             }
+
             "Certificate" -> {
-                updatePersonalInfoViewModel.certificateExistsLiveData.observe(this, Observer { certificateExists ->
-                    // Update UI based on whether certificate exists or not
-                    if (certificateExists) {
-                        // Certificate exists
-                        updateTextView(certificateExists, updatePersonalInfoBinding.tvCertificate)
-                        showToast("$fileType exists")
-                    } else {
-                        // Certificate does not exist
-                        // Update UI accordingly
-                        showToast("$fileType does not exist")
-                    }
-                })
+                updatePersonalInfoViewModel.certificateExistsLiveData.observe(
+                    this,
+                    Observer { certificateExists ->
+                        // Update UI based on whether certificate exists or not
+                        if (certificateExists) {
+                            // Certificate exists
+                            updateTextView(
+                                certificateExists,
+                                updatePersonalInfoBinding.tvCertificate
+                            )
+                            showToast("$fileType exists")
+                        } else {
+                            // Certificate does not exist
+                            // Update UI accordingly
+                            showToast("$fileType does not exist")
+                        }
+                    })
             }
+
             else -> {
                 // Handle other file types if needed
             }
