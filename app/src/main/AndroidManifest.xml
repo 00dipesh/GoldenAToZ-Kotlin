@@ -27,6 +27,9 @@
             android:name=".StoreVisit.CreateStore"
             android:exported="false" />
         <activity
+            android:name=".ProductView.ProductItemView"
+            android:exported="false" />
+        <activity
             android:name=".Leave.LeaveApplication"
             android:exported="false" />
         <activity
@@ -34,9 +37,6 @@
             android:exported="false" />
         <activity
             android:name=".Holiday.HolidayCalender"
-            android:exported="false" />
-        <activity
-            android:name=".StoreVisit.CreateStoreActivity"
             android:exported="false" />
         <activity
             android:name=".TourPlan.TourPlanActivity"
