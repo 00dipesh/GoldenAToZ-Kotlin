@@ -63,4 +63,13 @@
         <item>Full Day</item>
         <item>Half Day</item>
     </string-array>
+
+    <string-array name="store_type">
+        <item>Select</item>
+        <item>SuperMarket</item>
+        <item>Convenience Store</item>
+        <item>Chain Store</item>
+        <item>Ltnierant Retailor</item>
+        <!-- Add more status options as needed -->
+    </string-array>
 </resources>

@@ -31,7 +31,7 @@ import retrofit2.Response
 
 class TourPlanActivity : AppCompatActivity() {
 
-    val TAG = "MonthlyTourPlan"
+    val TAG = "TourPlanActivity"
     lateinit var tourPlanBinding: ActivityTourPlanBinding
     lateinit var stateCityViewModel: StateCityViewModel
     lateinit var TownName: MutableList<String>
@@ -49,9 +49,9 @@ class TourPlanActivity : AppCompatActivity() {
     lateinit var distributorVal: String
 
 
-    //private var TownName: MutableList<String>? = null
-    // private var SSName: MutableList<String>? = null
-    // private var distributorNames: MutableList<String>? = null
+// private var TownName: MutableList<String>? = null
+// private var SSName: MutableList<String>? = null
+// private var distributorNames: MutableList<String>? = null
 //    private var BeatName: MutableList<String>? = null
 //    private var dateVal: String? = null
 //    private var dayVal: String? = null
@@ -182,8 +182,8 @@ class TourPlanActivity : AppCompatActivity() {
         handleAddTourPlan()
     }
 
-    private fun getStateIdByName(stateName: String): Int {
-        val states = stateCityViewModel.statesLiveData.value
+        private fun getStateIdByName(stateName: String): Int {
+                val states = stateCityViewModel.statesLiveData.value
         states?.let {
             for (state in it) {
                 if (state.StateName == stateName) {
@@ -384,9 +384,6 @@ class TourPlanActivity : AppCompatActivity() {
 
         })
     }
-
-
-
 
 
     private fun showToast(message: String) {
