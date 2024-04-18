@@ -38,9 +38,7 @@
         <activity
             android:name=".Holiday.HolidayCalender"
             android:exported="false" />
-        <activity
-            android:name=".StoreVisit.CreateStoreActivity"
-            android:exported="false" />
+  
         <activity
             android:name=".TourPlan.TourPlanActivity"
             android:exported="false" />
