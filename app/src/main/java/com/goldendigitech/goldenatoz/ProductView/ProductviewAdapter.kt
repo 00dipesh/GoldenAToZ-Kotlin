@@ -1,6 +1,10 @@
 package com.goldendigitech.goldenatoz.ProductView
 
 import android.content.Context
+import android.content.Intent
+import android.text.Spannable
+import android.text.SpannableStringBuilder
+import android.text.style.StrikethroughSpan
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,35 +24,41 @@ class ProductviewAdapter(
     private var filteredProductList: List<ProductviewModel> = productViewModelList
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.product_list_item, parent, false)
+        val itemView =
+            LayoutInflater.from(parent.context).inflate(R.layout.product_list_item, parent, false)
         return MyViewHolder(itemView)
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val pm = filteredProductList[position]
         holder.bind(pm)
+
+        holder.itemView.setOnClickListener {
+            val intent = Intent(context, ProductItemView::class.java)
+            intent.putExtra(
+                "PRODUCT_MODEL",
+                pm
+            ) // Pass the entire product model to the ProductDetailsActivity
+            context.startActivity(intent)
+        }
     }
 
     override fun getItemCount(): Int = filteredProductList.size
 
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val tv_name: TextView = itemView.findViewById(R.id.tv_product_name)
-        private val tv_weight: TextView = itemView.findViewById(R.id.tv_product_weight)
-        private val tv_qtv: TextView = itemView.findViewById(R.id.tv_product_qty)
-        private val tv_storename: TextView = itemView.findViewById(R.id.tv_store_name)
         private val iv_product: ImageView = itemView.findViewById(R.id.iv_product_image)
-
+        private val tv_price: TextView = itemView.findViewById(R.id.tv_price);
 
 
         fun bind(productViewModel: ProductviewModel) {
             tv_name.text = productViewModel.productname
-            tv_weight.text = productViewModel.pweight
-            tv_qtv.text = productViewModel.pqty
-            tv_storename.text = productViewModel.storename
+            tv_price.text = strikeThroughText("₹20.00")
             Glide.with(itemView.context)
                 .load(productViewModel.imagePath)
                 .into(iv_product)
         }
+
     }
 
     override fun getFilter(): Filter {
@@ -80,5 +90,11 @@ class ProductviewAdapter(
                 }
             }
         }
+    }
+
+    fun strikeThroughText(text: String): SpannableStringBuilder {
+        val spannable = SpannableStringBuilder(text)
+        spannable.setSpan(StrikethroughSpan(), 0, text.length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+        return spannable
     }
 }

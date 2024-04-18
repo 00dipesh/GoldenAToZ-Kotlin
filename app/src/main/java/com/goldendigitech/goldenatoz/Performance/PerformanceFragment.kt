@@ -72,6 +72,8 @@ class PerformanceFragment : Fragment(), HomeAdapter.OnItemClickListener {
         tv_uname = view.findViewById(R.id.tv_uname)
         indicatorLayout = view.findViewById(R.id.indicatorsLayout)
 
+        tv_marquee.isSelected = true
+
         val employeeId = SharedPreferencesManager.getInstance(requireContext()).getUserId()
         val currentDate = Date()
         val dateFormat = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
