@@ -21,7 +21,7 @@ import com.goldendigitech.goldenatoz.Home.HomeModel
 import com.goldendigitech.goldenatoz.Home.HomeSubMenuAdapter
 import com.goldendigitech.goldenatoz.Home.HomeSubMenuModel
 import com.goldendigitech.goldenatoz.R
-import com.goldendigitech.goldenatoz.StoreVisit.StoreVisitActivity
+import com.goldendigitech.goldenatoz.StoreVisit.CreateStore
 import com.goldendigitech.goldenatoz.TourPlan.SelectTourPlanActivity
 import com.goldendigitech.goldenatoz.employee.DocumentViewModel
 import com.goldendigitech.goldenatoz.employee.Employee
@@ -241,7 +241,7 @@ class PerformanceFragment : Fragment(), HomeAdapter.OnItemClickListener {
         } else if (model.name == "Report") {
             //startActivity(new Intent(getActivity(), "".class));
         } else if (model.name == "SS/DB Registration") {
-            startActivity(Intent(activity, StoreVisitActivity::class.java))
+            startActivity(Intent(activity, CreateStore::class.java))
         } else if (model.name == "SS Visit") {
             //startActivity(new Intent(getActivity(), "".class));
         } else if (model.name == "Tour Plan") {
