@@ -148,7 +148,6 @@ class PerformanceFragment : Fragment(), HomeAdapter.OnItemClickListener {
                 updateIndicators()
             }
         })
-
         return view
     }
 
