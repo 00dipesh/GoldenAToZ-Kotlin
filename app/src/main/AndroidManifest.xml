@@ -24,12 +24,12 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".StoreVisit.CreateStore"
-
+            android:name=".ProductView.AddedProductList"
             android:exported="false" />
         <activity
-
+            android:name=".StoreVisit.CreateStore"
             android:exported="false" />
+
         <activity
             android:name=".ProductView.ProductItemView"
             android:exported="false" />
