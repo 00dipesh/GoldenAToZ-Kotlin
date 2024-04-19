@@ -89,7 +89,8 @@ class SelectTourPlanActivity : AppCompatActivity() {
     }
 
     private fun handleAllTourList() {
-
+        selectTourPlanBinding.blur.visibility =View.VISIBLE
+        selectTourPlanBinding.progressBar.visibility =View.VISIBLE
         val allTourCall: Call<GetAllTourResponce> = Constant.webService.getAllTourPlanList()
         allTourCall.enqueue(object : Callback<GetAllTourResponce> {
             override fun onResponse(
@@ -97,6 +98,8 @@ class SelectTourPlanActivity : AppCompatActivity() {
                 response: Response<GetAllTourResponce>
             ) {
                 if (response.isSuccessful) {
+                    selectTourPlanBinding.blur.visibility =View.GONE
+                    selectTourPlanBinding.progressBar.visibility =View.GONE
                     val allTourResponce = response.body()
                     Log.d("TAG", "response allTourResponce : $response.body")
                     val monthlyTourModelList = allTourResponce?.Data
@@ -128,6 +131,8 @@ class SelectTourPlanActivity : AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<GetAllTourResponce>, t: Throwable) {
+                selectTourPlanBinding.blur.visibility =View.GONE
+                selectTourPlanBinding.progressBar.visibility =View.GONE
                 showToast("Network Failure")
             }
 
