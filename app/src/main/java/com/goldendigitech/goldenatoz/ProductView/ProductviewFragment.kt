@@ -1,5 +1,6 @@
 package com.goldendigitech.goldenatoz.ProductView
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,22 +12,23 @@ import com.goldendigitech.goldenatoz.R
 import androidx.fragment.app.Fragment
 
 
-class ProductviewFragment : Fragment() {
+class ProductviewFragment : Fragment(), ProductviewAdapter.OnAddItemClickListener {
 
     lateinit var rv_productview: RecyclerView
     lateinit var productviewAdapter: ProductviewAdapter
     lateinit var hlist: List<ProductviewModel>
     lateinit var searchView: SearchView
+    private val productList = mutableListOf<ProductviewModel>()
 
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-        ): View? {
+    ): View? {
         val view: View = inflater.inflate(R.layout.fragment_productview, container, false)
 
-        // Initialize RecyclerView
+        // Initialize View
         rv_productview = view.findViewById(R.id.rv_productview)
         searchView = view.findViewById(R.id.sv_searchView)
 
@@ -48,6 +50,8 @@ class ProductviewFragment : Fragment() {
         rv_productview.layoutManager = mLayoutManager
 
         productviewAdapter = ProductviewAdapter(requireContext(), hlist)
+        productviewAdapter.setOnAddItemClickListener(this)
+
         rv_productview.adapter = productviewAdapter
 
 
@@ -131,6 +135,15 @@ class ProductviewFragment : Fragment() {
             )
         )
         hlist = tempList
+    }
+
+    override fun onAddItemClicked(productViewModel: ProductviewModel) {
+        productList.add(productViewModel)
+
+        val intent = Intent(requireContext(), AddedProductList::class.java)
+        // Pass the updated list to the next activity
+        intent.putExtra("PRODUCT_LIST", ArrayList(productList)) // Convert productList to ArrayList
+        startActivity(intent)
     }
 
 }

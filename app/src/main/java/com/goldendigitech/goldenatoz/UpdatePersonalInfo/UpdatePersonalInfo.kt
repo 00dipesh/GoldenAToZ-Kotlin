@@ -221,8 +221,7 @@ class UpdatePersonalInfo : AppCompatActivity(), View.OnClickListener {
             val genderVal = updatePersonalInfoBinding.edGender.selectedItem.toString().trim()
             val addressVal = updatePersonalInfoBinding.edAddress.text.toString().trim()
             val pAddressVal = updatePersonalInfoBinding.edPaddress.text.toString().trim()
-            val mStatusVal =
-                updatePersonalInfoBinding.edMaritualstatus.selectedItem.toString().trim()
+            val mStatusVal = updatePersonalInfoBinding.edMaritualstatus.selectedItem.toString().trim()
             val qualificationVal = updatePersonalInfoBinding.edQualification.text.toString().trim()
             val skillVal = updatePersonalInfoBinding.edSkill.text.toString().trim()
             val workExperienceVal = updatePersonalInfoBinding.edWrkexperience.text.toString().trim()

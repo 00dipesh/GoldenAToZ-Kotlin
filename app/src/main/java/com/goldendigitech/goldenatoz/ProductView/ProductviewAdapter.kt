@@ -22,6 +22,18 @@ class ProductviewAdapter(
 ) : RecyclerView.Adapter<ProductviewAdapter.MyViewHolder>(), Filterable {
 
     private var filteredProductList: List<ProductviewModel> = productViewModelList
+    private var addItemClickListener: OnAddItemClickListener? = null
+
+
+    // Interface for click listener
+    interface OnAddItemClickListener {
+        fun onAddItemClicked(productViewModel: ProductviewModel)
+    }
+
+    // Setter for click listener
+    fun setOnAddItemClickListener(listener: OnAddItemClickListener) {
+        this.addItemClickListener = listener
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val itemView =
@@ -41,6 +53,11 @@ class ProductviewAdapter(
             ) // Pass the entire product model to the ProductDetailsActivity
             context.startActivity(intent)
         }
+
+
+
+
+
     }
 
     override fun getItemCount(): Int = filteredProductList.size
@@ -49,6 +66,7 @@ class ProductviewAdapter(
         private val tv_name: TextView = itemView.findViewById(R.id.tv_product_name)
         private val iv_product: ImageView = itemView.findViewById(R.id.iv_product_image)
         private val tv_price: TextView = itemView.findViewById(R.id.tv_price);
+        private val tvaddProduct: TextView = itemView.findViewById(R.id.tvaddProduct)
 
 
         fun bind(productViewModel: ProductviewModel) {
@@ -57,6 +75,16 @@ class ProductviewAdapter(
             Glide.with(itemView.context)
                 .load(productViewModel.imagePath)
                 .into(iv_product)
+        }
+
+        init {
+            // Set click listener for "Add" TextView
+            tvaddProduct.setOnClickListener {
+                val position = adapterPosition
+                if (position != RecyclerView.NO_POSITION) {
+                    addItemClickListener?.onAddItemClicked(filteredProductList[position])
+                }
+            }
         }
 
     }

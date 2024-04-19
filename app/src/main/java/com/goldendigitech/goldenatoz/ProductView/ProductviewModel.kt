@@ -20,7 +20,8 @@ data class ProductviewModel(
     val NetQuantity: String,
     val ProductDimensions: String,
     val Flavour: String,
-    val IncludedComponents: String
+    val IncludedComponents: String,
+    var quantity: Int = 1
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readString() ?: "",
