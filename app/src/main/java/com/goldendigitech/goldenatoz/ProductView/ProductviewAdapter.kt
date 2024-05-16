@@ -53,11 +53,6 @@ class ProductviewAdapter(
             ) // Pass the entire product model to the ProductDetailsActivity
             context.startActivity(intent)
         }
-
-
-
-
-
     }
 
     override fun getItemCount(): Int = filteredProductList.size

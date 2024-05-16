@@ -23,6 +23,8 @@ import com.goldendigitech.goldenatoz.Leave.Response.AddLeaveModel
 import com.goldendigitech.goldenatoz.Leave.Response.AddLeaveResponse
 import com.goldendigitech.goldenatoz.Leave.Response.LeaveStatusResponse
 import com.goldendigitech.goldenatoz.SalarySlip.SalarySlipResponse
+import com.goldendigitech.goldenatoz.StoreVisit.AddStoreModel
+import com.goldendigitech.goldenatoz.StoreVisit.AddStoreResponce
 import com.goldendigitech.goldenatoz.UpdatePersonalInfo.UpdatePersonalInfoModel
 import com.goldendigitech.goldenatoz.UpdatePersonalInfo.UpdatePersonalInfoResponse
 import com.goldendigitech.goldenatoz.UpdatePersonalInfo.UploadDocumentModel
@@ -123,6 +125,9 @@ interface WebService {
 
     @GET("Api/Employee/Leave/GetLeaveByEmpIdAndStatus")
     fun showLeaveStatus(@Query("EmpId") empId: Int, @Query("Status") status: String): Call<LeaveStatusResponse>
+
+    @POST("Api/Account/Store/Add")
+    fun CreateStore(@Body addStoreModel: AddStoreModel): Call<AddStoreResponce>
 
 
 

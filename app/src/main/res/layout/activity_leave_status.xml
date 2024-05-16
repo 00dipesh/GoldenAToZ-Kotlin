@@ -58,7 +58,7 @@
             android:layout_below="@+id/iv_profile"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="5dp"
-            android:text="Sonu Bundhate"
+            android:text=""
             android:textColor="@color/black"
             android:textSize="16dp"
             android:textStyle="bold" />
@@ -302,5 +302,21 @@
             android:contentDescription="TODO"
             app:backgroundTint="#9942BE"
             android:src="@drawable/ic_baseline_add_24" />
+
+    <FrameLayout
+        android:id="@+id/blur"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ccffffff"
+        android:clickable="true"
+        android:visibility="gone" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        />
 
     </RelativeLayout>
