@@ -313,7 +313,7 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/urbanist_black"
-                android:text="Enter Discription:"
+                android:text="Enter Description:"
                 android:textColor="@color/gryclr"
                 android:textSize="15sp"
                 android:textStyle="bold" />
@@ -326,7 +326,7 @@
                 android:background="@drawable/edittext_drawable"
                 android:fontFamily="@font/urbanist_medium"
                 android:gravity="top|start"
-                android:hint="Discription"
+                android:hint="Description"
                 android:inputType="text"
                 android:maxLength="100"
                 android:paddingStart="15dp"
@@ -349,9 +349,8 @@
                 android:textSize="15sp"
                 android:textStyle="bold" />
 
-
-
         </LinearLayout>
+
     </ScrollView>
 
 

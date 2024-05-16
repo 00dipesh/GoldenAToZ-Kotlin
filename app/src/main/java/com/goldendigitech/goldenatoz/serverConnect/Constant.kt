@@ -16,6 +16,7 @@ object Constant {
 
     private const val BASE_URL = "https://goldendigitech.com/Goldenatozapi/"
 
+  //  private const val BASE_URL = "http://192.168.29.12:60302/"
 
     private val retrofit: Retrofit by lazy {
         Retrofit.Builder()

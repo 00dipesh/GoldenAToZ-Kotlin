@@ -21,6 +21,7 @@ class AddedProductList : AppCompatActivity() {
         // Retrieve the product list from the intent
         val productList = intent.getSerializableExtra("PRODUCT_LIST") as? ArrayList<ProductviewModel>
 
+
         // Check if productList is not null
         if (productList != null) {
             // Initialize RecyclerView

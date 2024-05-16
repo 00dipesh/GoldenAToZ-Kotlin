@@ -2,14 +2,31 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!--Camera Hardware Feature -->
+    <!-- This feature indicates that the application may use the device's camera if available,
+     but it's not mandatory for the app to function. -->
     <uses-feature
         android:name="android.hardware.camera"
         android:required="false" />
 
+    <!--Permission For Coarse Location Access-->
+    <!-- This permission allows the application to access approximate location derived from network sources such as cell towers and Wi-Fi. -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <!--Permission For the Fine Location Access-->
+    <!-- This permission allows the application to access precise location derived from GPS, cell towers, and Wi-Fi. -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <!--Permission for the Accessing network state-->
+    <!-- This permission allows the application to access information about networks to determine if a network connection is available and to determine if it is possible to connect to the internet. -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <!--Permission for internet access-->
+    <!-- This permission allows the application to open network sockets for internet communication. -->
     <uses-permission android:name="android.permission.INTERNET" />
+
+    <!--permission for camera access-->
+    <!-- This permission allows the application to access the device's camera for capturing photos and videos. -->
     <uses-permission android:name="android.permission.CAMERA" />
 
     <application
@@ -23,73 +40,98 @@
         android:theme="@style/Theme.GoldenATOZ"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+
+        <!--This Activity Represent Add ProductView Package-->
         <activity
             android:name=".ProductView.AddedProductList"
             android:exported="false" />
+
+        <!--This Activity Represent Add CreateStore Package-->
         <activity
             android:name=".StoreVisit.CreateStore"
             android:exported="false" />
 
+        <!---->
         <activity
             android:name=".ProductView.ProductItemView"
             android:exported="false" />
+
         <activity
             android:name=".Leave.LeaveApplication"
             android:exported="false" />
+
         <activity
             android:name=".Leave.LeaveStatus"
             android:exported="false" />
+
         <activity
             android:name=".Holiday.HolidayCalender"
             android:exported="false" />
+
         <activity
             android:name=".TourPlan.TourPlanActivity"
             android:exported="false" />
+
         <activity
             android:name=".TourPlan.SelectTourPlanActivity"
             android:exported="false" />
+
         <activity
             android:name=".UpdatePersonalInfo.UpdatePersonalInfo"
             android:exported="false" />
+
         <activity
             android:name=".SalarySlip.SalarySlipView"
             android:exported="false" />
+
         <activity
             android:name=".PersonalInfo.PersonalInfo"
             android:exported="false" />
+
         <activity
             android:name=".Idcard.IdCardActivity"
             android:exported="false" />
+
         <activity
             android:name=".Help.HelpActivity"
             android:exported="false" />
+
         <activity
             android:name=".Feedback.FeedbackForm"
             android:exported="false" />
+
         <activity
             android:name=".SalarySlip.SalarySlip"
             android:exported="false" />
+
         <activity
             android:name=".Visitingcard.VisitingCard"
             android:exported="false" />
+
         <activity
             android:name=".MyProfile.MyProfile"
             android:exported="false" />
+
         <activity
             android:name=".ChangePassword.ChangepasswordActivity"
             android:exported="false" />
+
         <activity
             android:name=".Complaint.ComplaintActivity"
             android:exported="false" />
+
         <activity
             android:name=".attendance.AttendanceActivity"
             android:exported="false" />
+
         <activity
             android:name=".MainActivity"
             android:exported="false" />
+
         <activity
             android:name=".login.LoginScreen"
             android:exported="false" />
+
         <activity
             android:name=".splash.SplashScreen"
             android:exported="true">
@@ -109,6 +151,7 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
+
     </application>
 
 </manifest>

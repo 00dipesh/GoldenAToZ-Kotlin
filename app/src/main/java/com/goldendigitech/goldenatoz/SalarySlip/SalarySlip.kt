@@ -23,7 +23,6 @@ class SalarySlip : AppCompatActivity() {
     private lateinit var adapter: SalarySlipAdapter
 
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 

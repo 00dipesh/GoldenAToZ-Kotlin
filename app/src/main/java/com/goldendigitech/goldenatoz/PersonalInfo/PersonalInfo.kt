@@ -77,6 +77,8 @@ class PersonalInfo : AppCompatActivity() {
     }
 
     private fun populateUI(employee: Employee?) {
+        personalInfoBinding.blur.visibility=View.VISIBLE
+        personalInfoBinding.progressBar.visibility =View.VISIBLE
         employee?.let { employee ->
             with(personalInfoBinding) {
                 tvFname.text = employee.firstName
@@ -109,10 +111,12 @@ class PersonalInfo : AppCompatActivity() {
         return try {
             val date = inputFormat.parse(dateString)
             outputFormat.format(date)
-        } catch (e: Exception) {
-            e.printStackTrace()
-            "" // Handle parsing exceptions
-        }
+            } catch (e: Exception) {
+                e.printStackTrace()
+                "" // Handle parsing exceptions
+            }
     }
+
+
 
 }
